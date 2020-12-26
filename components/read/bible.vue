@@ -49,9 +49,12 @@ export default {
 
 <style scoped>
 .text-wavy {
-  text-decoration-style: wavy;
+  text-decoration-style: solid;
   text-decoration-color: '#222444';
   text-decoration-line: underline;
+  text-decoration-thickness: 5px;
+  text-decoration-skip-ink: none;
+  text-underline-position: under;
 }
 .bordered-cage {
   border-right: 1px solid black;
