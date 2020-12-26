@@ -1,20 +1,20 @@
 <template>
   <main class="flex">
     <div
-      class="w-full md:w-1/2 lg:w-5/6 p-6 pr-0 box-border overflow-y-auto h-screen"
-      style="background-color: #5e3a2a"
+      class="w-full md:w-1/2 lg:w-5/6 p-6 pr-0 box-border overflow-y-auto h-screen main-bible-space"
     >
       <bible :verses="verses"></bible>
     </div>
-    <div class="hidden md:block md:w-1/2">
-      <p>Herramientas</p>
+    <div class="hidden md:block md:w-1/2 h-screen">
+      <tools></tools>
     </div>
   </main>
 </template>
 <script>
 import bible from '~/components/read/bible.vue'
+import tools from '~/components/read/tools.vue'
 export default {
-  components: { bible },
+  components: { bible, tools },
   async asyncData({ $axios }) {
     const response = await $axios.$get(
       'https://ajith-holy-bible.p.rapidapi.com/GetChapter',
@@ -43,3 +43,9 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.main-bible-space {
+  background: url('~@/static/bg/bg-black-pattern.png');
+}
+</style>
