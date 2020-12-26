@@ -9,14 +9,15 @@
       @click="selectVerse(verse.id)"
     >
       <span
-        class="mr-2 no-underline text-left"
+        class="no-underline mr-4"
         :class="{
           'text-6xl': index === 0,
           'text-xl': index !== 0,
+          'bordered-cage': index === 0,
         }"
       >
-        {{ index + 1 }}</span
-      >
+        {{ index + 1 }}
+      </span>
       <span
         :class="{
           'text-wavy': verse.selected,
@@ -51,5 +52,9 @@ export default {
   text-decoration-style: wavy;
   text-decoration-color: '#222444';
   text-decoration-line: underline;
+}
+.bordered-cage {
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
 }
 </style>
