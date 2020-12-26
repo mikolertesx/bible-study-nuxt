@@ -51,8 +51,7 @@ export default {
       'https://ajith-holy-bible.p.rapidapi.com/GetChapter',
       {
         headers: {
-          'x-rapidapi-key':
-            '9bc56b7e1dmsh7df305fda0e2861p13ad4bjsn2641d57fcb6d',
+          'x-rapidapi-key': process.env.key,
           'x-rapidapi-host': 'ajith-holy-bible.p.rapidapi.com',
           useQueryString: true,
         },
