@@ -23,4 +23,8 @@ export default {
   axios: {},
 
   build: {},
+
+  env: {
+    key: process.env.BIBLE_KEY,
+  },
 }
