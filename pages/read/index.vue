@@ -1,27 +1,36 @@
 <template>
   <main class="flex">
-    <div class="bg-gray-500 w-full md:w-1/2 min-h-screen">
-      <p
-        v-for="(verse, index) in verses"
-        :key="verse.id"
-        :style="{ backgroundColor: verse.background || 'none' }"
-        class="align-text-bottom select-none cursor-text"
-        :class="{
-          'text-wavy': verse.selected,
-        }"
-        @click="selectVerse(verse.id)"
+    <div
+      class="container w-full md:w-1/2 p-2 box-border overflow-scroll h-screen"
+    >
+      <div
+        class="bg-gray-500 min-h-screen rounded-lg rounded-r-none overflow-hidden"
       >
-        <span
-          class="ml-4 mr-2"
-          :class="{
-            'text-5xl': index === 0,
-            'text-3xl': index !== 0,
-          }"
+        <p
+          v-for="(verse, index) in verses"
+          :key="verse.id"
+          :style="{ backgroundColor: verse.background || 'none' }"
+          class="align-text-bottom select-none cursor-text mb-8 ml-8 p-4"
+          @click="selectVerse(verse.id)"
         >
-          {{ index + 1 }}</span
-        >
-        {{ verse.text }}
-      </p>
+          <span
+            class="mr-2 no-underline"
+            :class="{
+              'text-5xl': index === 0,
+              'text-xl': index !== 0,
+            }"
+          >
+            {{ index + 1 }}</span
+          >
+          <span
+            :class="{
+              'text-wavy': verse.selected,
+            }"
+          >
+            {{ verse.text }}
+          </span>
+        </p>
+      </div>
     </div>
     <div class="hidden md:block md:w-1/2">
       <p>Herramientas</p>
@@ -30,22 +39,6 @@
 </template>
 <script>
 export default {
-  // data() {
-  //   return {
-  //     verses: [
-  //       {
-  //         id: 1,
-  //         text: 'Jesucristo, nos ha dado todo para que seamos hijos suyos.',
-  //         selected: false,
-  //       },
-  //       {
-  //         id: 2,
-  //         text: 'Es realmente importante recordar.',
-  //         selected: false,
-  //       },
-  //     ],
-  //   }
-  // },
   async asyncData({ $axios }) {
     const response = await $axios.$get(
       'https://ajith-holy-bible.p.rapidapi.com/GetChapter',
@@ -61,22 +54,15 @@ export default {
         },
       }
     )
-
-    console.log(response)
+    const verses = response.Output.replace(/&lt;\w+&gt;/, '')
+      .split(/\d+/)
+      .filter((verse) => verse.trim() !== '')
+      .map((verse, index) => {
+        return { id: index, text: verse.trim(), selected: false }
+      })
 
     return {
-      verses: [
-        {
-          id: 1,
-          text: 'Jesucristo, nos ha dado todo para que seamos hijos suyos.',
-          selected: false,
-        },
-        {
-          id: 2,
-          text: 'Es realmente importante recordar.',
-          selected: false,
-        },
-      ],
+      verses,
     }
   },
   methods: {
