@@ -1,6 +1,6 @@
 <template>
-  <header class="fixed left-0 top-0 w-screen p-2">
-    <nav class="flex justify-between px-4">
+  <header class="fixed left-0 top-0 w-screen p-2 h-16">
+    <nav class="flex justify-between box-border py-1 px-4 item-center h-full">
       <select v-model="selectedBook">
         <option v-for="option in options" :key="option.id" :value="option.name">
           {{ option.name }}
@@ -19,12 +19,6 @@
 // TODO Replace v-model, it's not a good solution when trying to sync it with Vuex
 import { booksInOrder } from '~/util/bibleBooks'
 export default {
-  data() {
-    return {
-      selectedBook: 'Psalms',
-      selectedChapter: '119',
-    }
-  },
   computed: {
     options() {
       return booksInOrder.map((book, index) => {
@@ -35,6 +29,22 @@ export default {
         }
       })
     },
+    selectedBook: {
+      get() {
+        return this.$store.getters['read/book']
+      },
+      set(value) {
+        return this.$store.dispatch('read/setCurrentBook', value)
+      },
+    },
+    selectedChapter: {
+      get() {
+        return this.$store.getters['read/chapter']
+      },
+      set(value) {
+        return this.$store.dispatch('read/setCurrentChapter', value)
+      },
+    },
     chapters() {
       if (this.selectedBook === '') {
         return null
@@ -43,21 +53,6 @@ export default {
         (book) => book.name === this.selectedBook
       )
       return filteredBook.chapters
-    },
-  },
-  watch: {
-    selectedBook(newBook, oldBook) {
-      if (newBook !== oldBook) {
-        this.$store.dispatch('read/setCurrentBook', newBook)
-        this.selectedChapter = '1'
-      }
-    },
-    selectedChapter(value) {
-      this.$store.dispatch('read/setCurrentChapter', value)
-    },
-    chapterState(value) {
-      console.log('Chapter changed state wide')
-      this.selectedChapter = value
     },
   },
 }

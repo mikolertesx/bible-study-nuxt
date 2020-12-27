@@ -1,31 +1,36 @@
 <template>
   <div class="bg-white min-h-screen rounded-lg rounded-r-none overflow-hidden">
-    <p
-      v-for="(verse, index) in verses"
-      :key="verse.id"
-      :style="{ backgroundColor: verse.background || 'none' }"
-      class="align-text-bottom select-none cursor-text mb-1 p-4 text-lg"
-      :class="{ 'ml-2': index !== 0, 'ml-0': index === 0 }"
-      @click="selectVerse(verse.id)"
-    >
-      <span
-        class="no-underline mr-4"
-        :class="{
-          'text-6xl': index === 0,
-          'text-xl': index !== 0,
-          'bordered-cage': index === 0,
-        }"
+    <div v-if="!isLoading">
+      <p
+        v-for="(verse, index) in verses"
+        :key="verse.id"
+        :style="{ backgroundColor: verse.background || 'none' }"
+        class="align-text-bottom select-none cursor-text mb-1 p-4 text-lg"
+        :class="{ 'ml-2': index !== 0, 'ml-0': index === 0 }"
+        @click="selectVerse(verse.id)"
       >
-        {{ index + 1 }}
-      </span>
-      <span
-        :class="{
-          'text-wavy': verse.selected,
-        }"
-      >
-        {{ verse.text }}
-      </span>
-    </p>
+        <span
+          class="no-underline mr-4"
+          :class="{
+            'text-6xl': index === 0,
+            'text-xl': index !== 0,
+            'bordered-cage': index === 0,
+          }"
+        >
+          {{ index + 1 }}
+        </span>
+        <span
+          :class="{
+            'text-wavy': verse.selected,
+          }"
+        >
+          {{ verse.text }}
+        </span>
+      </p>
+    </div>
+    <div v-else class="flex justify-center items-center min-h-screen">
+      <spinner></spinner>
+    </div>
   </div>
 </template>
 
@@ -36,6 +41,11 @@ export default {
       default: () => [],
       required: true,
       type: Array,
+    },
+  },
+  computed: {
+    isLoading() {
+      return this.$store.getters['read/loading']
     },
   },
   methods: {

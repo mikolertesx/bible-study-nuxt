@@ -12,7 +12,7 @@ export default {
 
   css: [],
 
-  plugins: [],
+  plugins: ['~plugins/core-components.js'],
 
   components: true,
 

@@ -3,6 +3,7 @@ export const state = () => {
     currentBook: 'Psalms',
     currentChapter: '119',
     verses: [],
+    loading: false,
   }
 }
 
@@ -25,6 +26,10 @@ export const mutations = {
     )
     selectedVerse.selected = !selectedVerse.selected
   },
+  setLoading(state, loading) {
+    console.log('Loading proccess!!!', loading)
+    state.loading = loading
+  },
 }
 
 export const actions = {
@@ -37,7 +42,7 @@ export const actions = {
       // We already have the verses in it.
       return
     }
-    console.log(book, chapter)
+    commit('setLoading', true)
     const versesResponse = await this.$axios.$get(
       'https://ajith-holy-bible.p.rapidapi.com/GetChapter',
       {
@@ -58,7 +63,7 @@ export const actions = {
       .map((verse, index) => {
         return { id: index, text: verse.trim(), selected: false }
       })
-
+    commit('setLoading', false)
     commit('setVerses', verses)
   },
   setCurrentBook({ commit, state, dispatch }, newBook) {
@@ -91,9 +96,12 @@ export const getters = {
     return [...state.verses]
   },
   chapter(state) {
-    return state.chapter
+    return state.currentChapter.toString() || '1'
   },
   book(state) {
-    return state.book
+    return state.currentBook
+  },
+  loading(state) {
+    return state.loading
   },
 }

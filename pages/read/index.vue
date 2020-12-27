@@ -1,7 +1,7 @@
 <template>
-  <main class="flex">
+  <main class="flex box-border">
     <div
-      class="w-full md:w-1/2 lg:w-5/6 p-6 pr-0 box-border overflow-y-auto h-screen main-bible-space"
+      class="w-full md:w-1/2 lg:w-5/6 p-6 pt-0 pb-0 pr-0 box-border overflow-y-auto h-screen main-bible-space"
     >
       <bible :verses="verses"></bible>
     </div>
