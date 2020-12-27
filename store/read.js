@@ -27,7 +27,6 @@ export const mutations = {
     selectedVerse.selected = !selectedVerse.selected
   },
   setLoading(state, loading) {
-    console.log('Loading proccess!!!', loading)
     state.loading = loading
   },
 }
