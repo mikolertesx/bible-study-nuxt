@@ -1,7 +1,7 @@
 <template>
   <header class="fixed left-0 top-0 w-screen p-2">
     <nav class="flex justify-between px-4">
-      <select v-model="selectedVerse">
+      <select v-model="selectedBook">
         <option v-for="option in options" :key="option.id" :value="option.name">
           {{ option.name }}
         </option>
@@ -16,11 +16,12 @@
 </template>
 
 <script>
+// TODO Replace v-model, it's not a good solution when trying to sync it with Vuex
 import { booksInOrder } from '~/util/bibleBooks'
 export default {
   data() {
     return {
-      selectedVerse: 'Psalms',
+      selectedBook: 'Psalms',
       selectedChapter: '119',
     }
   },
@@ -35,13 +36,28 @@ export default {
       })
     },
     chapters() {
-      if (this.selectedVerse === '') {
+      if (this.selectedBook === '') {
         return null
       }
-      const selectedBook = booksInOrder.find(
-        (book) => book.name === this.selectedVerse
+      const filteredBook = booksInOrder.find(
+        (book) => book.name === this.selectedBook
       )
-      return selectedBook.chapters
+      return filteredBook.chapters
+    },
+  },
+  watch: {
+    selectedBook(newBook, oldBook) {
+      if (newBook !== oldBook) {
+        this.$store.dispatch('read/setCurrentBook', newBook)
+        this.selectedChapter = '1'
+      }
+    },
+    selectedChapter(value) {
+      this.$store.dispatch('read/setCurrentChapter', value)
+    },
+    chapterState(value) {
+      console.log('Chapter changed state wide')
+      this.selectedChapter = value
     },
   },
 }

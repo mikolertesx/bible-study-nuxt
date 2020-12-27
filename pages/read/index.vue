@@ -20,52 +20,30 @@ export default {
     const selectedBook = 'Psalms'
     const selectedChapter = '119'
     return {
-      verses: [],
       selectedBook,
       selectedChapter,
     }
   },
-  watch: {
-    selectedBook() {
-      this.updateVerses()
+  computed: {
+    verses() {
+      return this.$store.getters['read/verses']
     },
-    selectedChapter() {
-      this.updateVerses()
+    chapter() {
+      return this.$store.getters['read/chapter']
+    },
+    book() {
+      return this.$store.getters['read/book']
     },
   },
   mounted() {
     this.updateVerses()
   },
   methods: {
-    async getVerses(book, chapter) {
-      const versesResponse = await this.$axios.$get(
-        'https://ajith-holy-bible.p.rapidapi.com/GetChapter',
-        {
-          headers: {
-            'x-rapidapi-key': process.env.key,
-            'x-rapidapi-host': 'ajith-holy-bible.p.rapidapi.com',
-            useQueryString: true,
-          },
-          params: {
-            Book: book,
-            Chapter: chapter,
-          },
-        }
-      )
-      const verses = versesResponse.Output.replace(/&lt;(.+?)&gt;/gs, '')
-        .split(/\d+/)
-        .filter((verse) => verse.trim() !== '')
-        .map((verse, index) => {
-          return { id: index, text: verse.trim(), selected: false }
-        })
-      return verses
+    getVerses(book, chapter) {
+      this.$store.dispatch('read/getVerses', { book, chapter })
     },
-    async updateVerses() {
-      const verses = await this.getVerses(
-        this.selectedBook,
-        this.selectedChapter
-      )
-      this.verses = verses
+    updateVerses() {
+      this.getVerses(this.selectedBook, this.selectedChapter)
     },
   },
 }

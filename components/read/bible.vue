@@ -40,8 +40,7 @@ export default {
   },
   methods: {
     selectVerse(id) {
-      const selectedVerse = this.verses.find((verse) => verse.id === id)
-      selectedVerse.selected = !selectedVerse.selected
+      this.$store.dispatch('read/selectVerse', id)
     },
   },
 }
