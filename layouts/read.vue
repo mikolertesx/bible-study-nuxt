@@ -1,7 +1,9 @@
 <template>
-  <div>
+  <div class="app-wrapper">
     <read-header></read-header>
-    <Nuxt />
+    <div class="content">
+      <Nuxt />
+    </div>
   </div>
 </template>
 
@@ -23,6 +25,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
+  height: 100%;
 }
 
 *,
@@ -59,5 +62,11 @@ html {
 .button--grey:hover {
   color: #fff;
   background-color: #35495e;
+}
+
+.content {
+  height: calc(100vh - 4rem);
+  margin-top: 4rem;
+  overflow: hidden;
 }
 </style>

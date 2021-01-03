@@ -13,6 +13,7 @@
             'bg-blue-800': isFirstChapter,
             'border-solid': isFirstChapter,
             'bg-blue-500': !isFirstChapter,
+            'cursor-default': isFirstChapter,
           }"
           :disabled="isFirstChapter"
           @click="goPrev"
@@ -34,6 +35,7 @@
             'bg-blue-800': isLastChapter,
             'border-solid': isLastChapter,
             'bg-blue-500': !isLastChapter,
+            'cursor-default': isLastChapter,
           }"
           :disabled="isLastChapter"
           @click="goNext"

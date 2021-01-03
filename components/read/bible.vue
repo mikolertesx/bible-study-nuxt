@@ -1,6 +1,6 @@
 <template>
-  <div class="bg-white min-h-screen rounded-lg rounded-r-none overflow-hidden">
-    <div v-if="!isLoading">
+  <div class="bg-white rounded-lg rounded-r-none h-full">
+    <div v-if="!isLoading" class="h-full overflow-y-scroll">
       <p
         v-for="(verse, index) in verses"
         :key="verse.id"
