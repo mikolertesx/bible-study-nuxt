@@ -122,4 +122,10 @@ export const getters = {
     )
     return selectedBook.chapters
   },
+  isFirstChapter(_state, getters) {
+    return +getters.chapter === 1
+  },
+  isLastChapter(_state, getters) {
+    return +getters.chapter === getters.chapterNumber
+  },
 }

@@ -8,7 +8,13 @@
       </select>
       <div>
         <button
-          class="bg-blue-500 px-4 rounded text-white h-full"
+          class="px-4 rounded text-white h-full"
+          :class="{
+            'bg-blue-800': isFirstChapter,
+            'border-solid': isFirstChapter,
+            'bg-blue-500': !isFirstChapter,
+          }"
+          :disabled="isFirstChapter"
           @click="goPrev"
         >
           Back
@@ -23,7 +29,13 @@
           </option>
         </select>
         <button
-          class="bg-blue-500 px-4 rounded text-white h-full"
+          class="px-4 rounded text-white h-full"
+          :class="{
+            'bg-blue-800': isLastChapter,
+            'border-solid': isLastChapter,
+            'bg-blue-500': !isLastChapter,
+          }"
+          :disabled="isLastChapter"
           @click="goNext"
         >
           Next
@@ -71,6 +83,12 @@ export default {
         (book) => book.name === this.selectedBook
       )
       return filteredBook.chapters
+    },
+    isLastChapter() {
+      return this.$store.getters['read/isLastChapter']
+    },
+    isFirstChapter() {
+      return this.$store.getters['read/isFirstChapter']
     },
   },
   methods: {
