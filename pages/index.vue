@@ -26,6 +26,9 @@
 </template>
 
 <script>
+// TODO Create a starting page
+// TODO Fix the styling
+// TODO Add a sidebar
 export default {}
 </script>
 

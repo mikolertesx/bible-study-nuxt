@@ -6,18 +6,36 @@
           {{ option.name }}
         </option>
       </select>
-      <select v-if="chapters !== null" v-model="selectedChapter">
-        <option v-for="chapter in chapters" :key="chapter" :value="chapter">
-          {{ chapter }}
-        </option>
-      </select>
+      <div>
+        <button
+          class="bg-blue-500 px-4 rounded text-white h-full"
+          @click="goPrev"
+        >
+          Back
+        </button>
+        <select
+          v-if="chapters !== null"
+          v-model="selectedChapter"
+          class="h-full"
+        >
+          <option v-for="chapter in chapters" :key="chapter" :value="chapter">
+            {{ chapter }}
+          </option>
+        </select>
+        <button
+          class="bg-blue-500 px-4 rounded text-white h-full"
+          @click="goNext"
+        >
+          Next
+        </button>
+      </div>
     </nav>
   </header>
 </template>
 
 <script>
-// TODO Replace v-model, it's not a good solution when trying to sync it with Vuex
 import { booksInOrder } from '~/util/bibleBooks'
+// TODO Add the next and prev button
 export default {
   computed: {
     options() {
@@ -53,6 +71,14 @@ export default {
         (book) => book.name === this.selectedBook
       )
       return filteredBook.chapters
+    },
+  },
+  methods: {
+    goNext() {
+      this.$store.dispatch('read/nextChapter')
+    },
+    goPrev() {
+      this.$store.dispatch('read/previousChapter')
     },
   },
 }

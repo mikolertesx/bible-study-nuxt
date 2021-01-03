@@ -1,3 +1,5 @@
+import { booksInOrder } from '@/util/bibleBooks'
+
 export const state = () => {
   return {
     currentBook: 'Psalms',
@@ -88,6 +90,14 @@ export const actions = {
   selectVerse({ commit }, verseId) {
     commit('selectVerse', verseId)
   },
+  nextChapter({ dispatch, state }) {
+    // TODO Go to the next book if we are on the last chapter.
+    dispatch('setCurrentChapter', (+state.currentChapter + 1).toString())
+  },
+  previousChapter({ dispatch, state }) {
+    // TODO Go to the previous book if we are on the first chapter.
+    dispatch('setCurrentChapter', (+state.currentChapter - 1).toString())
+  },
 }
 
 export const getters = {
@@ -102,5 +112,14 @@ export const getters = {
   },
   loading(state) {
     return state.loading
+  },
+  selectedVerses(state) {
+    return state.verses.filter((verse) => verse.selected === true)
+  },
+  chapterNumber(state) {
+    const selectedBook = booksInOrder.find(
+      (book) => book.name === state.currentBook
+    )
+    return selectedBook.chapters
   },
 }
