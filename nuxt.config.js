@@ -27,4 +27,8 @@ export default {
   env: {
     key: process.env.BIBLE_KEY,
   },
+  target: 'static',
+  router: {
+    base: '/bible-study-nuxt/',
+  },
 }
