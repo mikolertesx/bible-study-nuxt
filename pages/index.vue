@@ -29,6 +29,7 @@
 // TODO Create a starting page
 // TODO Fix the styling
 // TODO Add a sidebar
+// TODO Create styling for sidebars (Thinner look for better use of space would be good)
 export default {}
 </script>
 
