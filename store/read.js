@@ -53,8 +53,8 @@ export const actions = {
           useQueryString: true,
         },
         params: {
-          Book: book,
-          Chapter: chapter,
+          Book: book || state.currentBook,
+          Chapter: chapter || state.currentChapter,
         },
       }
     )
@@ -66,6 +66,15 @@ export const actions = {
       })
     commit('setLoading', false)
     commit('setVerses', verses)
+  },
+  getAndUpdateVerses({ dispatch, state }, { book, chapter }) {
+    if (!book || !chapter) {
+      book = state.currentBook
+      chapter = state.currentChapter
+    }
+    dispatch('setCurrentBook', book)
+    dispatch('setCurrentChapter', chapter)
+    dispatch('getVerses', { book, chapter })
   },
   setCurrentBook({ commit, state, dispatch }, newBook) {
     if (state.currentBook === newBook) {

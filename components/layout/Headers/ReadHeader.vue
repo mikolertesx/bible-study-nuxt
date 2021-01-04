@@ -84,7 +84,7 @@ export default {
       const filteredBook = booksInOrder.find(
         (book) => book.name === this.selectedBook
       )
-      return filteredBook.chapters
+      return filteredBook ? filteredBook.chapters : null
     },
     isLastChapter() {
       return this.$store.getters['read/isLastChapter']

@@ -16,14 +16,6 @@ import tools from '~/components/read/tools.vue'
 export default {
   layout: 'read',
   components: { bible, tools },
-  data() {
-    const selectedBook = 'Psalms'
-    const selectedChapter = '119'
-    return {
-      selectedBook,
-      selectedChapter,
-    }
-  },
   computed: {
     verses() {
       return this.$store.getters['read/verses']
@@ -35,15 +27,34 @@ export default {
       return this.$store.getters['read/book']
     },
   },
+  watch: {
+    chapter() {
+      this.updateQuery()
+    },
+    book() {
+      this.updateQuery()
+    },
+  },
   mounted() {
-    this.updateVerses()
+    const book = this.$route.query.book
+    const chapter = this.$route.query.chapter
+    this.getVerses(book, chapter)
+    this.updateVerses(book, chapter)
   },
   methods: {
     getVerses(book, chapter) {
-      this.$store.dispatch('read/getVerses', { book, chapter })
+      this.$store.dispatch('read/getAndUpdateVerses', { book, chapter })
     },
-    updateVerses() {
-      this.getVerses(this.selectedBook, this.selectedChapter)
+    updateVerses(book, chapter) {
+      this.getVerses(book, chapter)
+      this.updateQuery(book, chapter)
+    },
+    updateQuery(book = this.book, chapter = this.chapter) {
+      const fixedBook = book || this.$store.getters['read/book']
+      const fixedChapter = chapter || this.$store.getters['read/chapter']
+      this.$router.replace({
+        query: { ...this.$route.query, book: fixedBook, chapter: fixedChapter },
+      })
     },
   },
 }
