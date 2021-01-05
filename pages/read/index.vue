@@ -38,7 +38,6 @@ export default {
   mounted() {
     const book = this.$route.query.book
     const chapter = this.$route.query.chapter
-    this.getVerses(book, chapter)
     this.updateVerses(book, chapter)
   },
   methods: {
