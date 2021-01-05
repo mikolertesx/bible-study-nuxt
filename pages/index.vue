@@ -4,10 +4,10 @@
     <p class="subtitle">Gather up and have fun reading the bible</p>
     <p>In this hard times there's no better use of your time</p>
     <div class="controls flex gap-10 mx-auto mt-4 w-3/4 justify-center">
-      <app-button class="px-4 py-2 flex-grow" @click="redirect('/read')"
+      <app-button class="px-4 py-2 flex-grow" @click="redirect('/read', true)"
         >Register</app-button
       >
-      <app-button class="px-4 py-2 flex-grow" @click="redirect('/read')"
+      <app-button class="px-4 py-2 flex-grow" @click="redirect('/read', true)"
         >Login</app-button
       >
       <app-button class="px-4 py-2 flex-grow" @click="redirect('/read')"
@@ -24,8 +24,12 @@
 // TODO Create styling for sidebars (Thinner look for better use of space would be good)
 export default {
   methods: {
-    redirect(newAdress) {
-      console.log('Asked for redirect')
+    redirect(newAdress, notImplemented = false) {
+      if (notImplemented) {
+        alert(
+          'This route is not yet implemented, you are getting redirected to the reading section'
+        )
+      }
       this.$router.push(newAdress)
     },
   },
