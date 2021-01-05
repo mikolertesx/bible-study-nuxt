@@ -7,19 +7,7 @@
         </option>
       </select>
       <div>
-        <button
-          class="px-4 rounded text-white h-full"
-          :class="{
-            'bg-blue-800': isFirstChapter,
-            'border-solid': isFirstChapter,
-            'bg-blue-500': !isFirstChapter,
-            'cursor-default': isFirstChapter,
-          }"
-          :disabled="isFirstChapter"
-          @click="goPrev"
-        >
-          Back
-        </button>
+        <app-button :enabled="!isFirstChapter" @click="goPrev">Back</app-button>
         <select
           v-if="chapters !== null"
           v-model="selectedChapter"
@@ -29,19 +17,7 @@
             {{ chapter }}
           </option>
         </select>
-        <button
-          class="px-4 rounded text-white h-full"
-          :class="{
-            'bg-blue-800': isLastChapter,
-            'border-solid': isLastChapter,
-            'bg-blue-500': !isLastChapter,
-            'cursor-default': isLastChapter,
-          }"
-          :disabled="isLastChapter"
-          @click="goNext"
-        >
-          Next
-        </button>
+        <app-button :enabled="!isLastChapter" @click="goNext">Next</app-button>
       </div>
     </nav>
   </header>

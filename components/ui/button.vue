@@ -7,8 +7,8 @@
       'bg-blue-500': enabled,
       'cursor-default': !enabled,
     }"
-    :disabled="enabled"
-    @click="click"
+    :disabled="!enabled"
+    @click="onClick"
   >
     <slot></slot>
   </button>
@@ -21,9 +21,10 @@ export default {
       type: Boolean,
       default: true,
     },
-    click: {
-      type: Function,
-      default: () => {},
+  },
+  methods: {
+    onClick($e) {
+      this.$emit('click', $e)
     },
   },
 }
