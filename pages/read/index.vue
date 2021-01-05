@@ -50,11 +50,23 @@ export default {
       this.updateQuery(book, chapter)
     },
     updateQuery(book = this.book, chapter = this.chapter) {
+      const currentQueryBook = this.$route.query.book
+      const currentChapterBook = this.$route.query.chapter
       const fixedBook = book || this.$store.getters['read/book']
       const fixedChapter = chapter || this.$store.getters['read/chapter']
-      this.$router.replace({
-        query: { ...this.$route.query, book: fixedBook, chapter: fixedChapter },
-      })
+
+      if (
+        currentQueryBook !== fixedBook &&
+        currentChapterBook !== fixedChapter
+      ) {
+        this.$router.replace({
+          query: {
+            ...this.$route.query,
+            book: fixedBook,
+            chapter: fixedChapter,
+          },
+        })
+      }
     },
   },
 }

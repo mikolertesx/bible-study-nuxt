@@ -1,5 +1,7 @@
 import { booksInOrder } from '@/util/bibleBooks'
 
+// TODO Add cancel request to avoid overloading the servers
+
 export const state = () => {
   return {
     currentBook: 'Psalms',
