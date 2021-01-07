@@ -34,6 +34,10 @@ export default {
     book() {
       this.updateQuery()
     },
+    $route(to) {
+      const { book, chapter } = to.query
+      this.getVerses(book, chapter)
+    },
   },
   mounted() {
     const book = this.$route.query.book
@@ -49,23 +53,14 @@ export default {
       this.updateQuery(book, chapter)
     },
     updateQuery(book = this.book, chapter = this.chapter) {
-      const currentQueryBook = this.$route.query.book
-      const currentChapterBook = this.$route.query.chapter
-      const fixedBook = book || this.$store.getters['read/book']
-      const fixedChapter = chapter || this.$store.getters['read/chapter']
-
-      if (
-        currentQueryBook !== fixedBook &&
-        currentChapterBook !== fixedChapter
-      ) {
-        this.$router.replace({
-          query: {
-            ...this.$route.query,
-            book: fixedBook,
-            chapter: fixedChapter,
-          },
-        })
-      }
+      this.$router.push({
+        query: {
+          ...this.$route.query,
+          book,
+          chapter,
+        },
+      })
+      // }
     },
   },
 }

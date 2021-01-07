@@ -115,7 +115,6 @@ export const actions = {
     dispatch('setCurrentChapter', (+state.currentChapter - 1).toString())
   },
   createNote({ commit }, { id, text, verses }) {
-    console.log(id, text, verses)
     const newNote = new Note(id, text, verses)
     commit('createNote', newNote)
   },
@@ -137,7 +136,11 @@ export const getters = {
   selectedVerses(state) {
     return state.verses
       .filter((verse) => verse.selected === true)
-      .map((verse) => ({ ...verse, originBook: state.currentBook }))
+      .map((verse) => ({
+        ...verse,
+        originBook: state.currentBook,
+        originChapter: state.currentChapter,
+      }))
   },
   chapterNumber(state) {
     const selectedBook = booksInOrder.find(

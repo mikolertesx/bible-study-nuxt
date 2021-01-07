@@ -32,8 +32,20 @@
         >
       </div>
       <div class="notes">
-        <div v-for="savedNote in savedNotes" :key="savedNote.id" class="note">
+        <note-item
+          v-for="savedNote in savedNotes"
+          :key="savedNote.id"
+          :note="savedNote"
+        ></note-item>
+        <!-- <div v-for="savedNote in savedNotes" :key="savedNote.id" class="note">
           <div class="verses">
+            <p
+              v-for="verse in savedNote.verses"
+              :key="`verse-${verse.id}`"
+              class="text-gray-500"
+            >
+              {{ verse.text }}
+            </p>
             <p>Verses inside:</p>
             <p
               v-for="verse in savedNote.verses"
@@ -43,21 +55,26 @@
               {{ verse.id + 1 }},
             </p>
             <p style="display: inline">
-              From {{ savedNote.verses[0].originBook }}
+              From {{ savedNote.verses[0].originBook }} chapter
+              {{ savedNote.verses[0].originChapter }}
             </p>
             <hr />
           </div>
           <p>
             {{ savedNote.text }}
           </p>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import noteItem from '@/components/read/noteItem'
 export default {
+  components: {
+    noteItem,
+  },
   data() {
     return {
       note: '',
