@@ -24,8 +24,12 @@
           {{ chapter }}
         </p>
       </nuxt-link>
-      <p class="m-2">
-        {{ note.text }}
+      <p
+        v-for="(textSection, index) in splitText"
+        :key="`text-section-${index}`"
+        class="m-2"
+      >
+        {{ textSection }}
       </p>
     </div>
   </div>
@@ -48,6 +52,9 @@ export default {
     },
     link() {
       return `/read?book=${this.book}&chapter=${this.chapter}`
+    },
+    splitText() {
+      return this.note.text.split('\n')
     },
   },
 }
