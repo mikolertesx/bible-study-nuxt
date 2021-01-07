@@ -27,8 +27,30 @@
         <app-button
           :enabled="note.length > 0 && selectedVerses.length !== 0"
           class="w-full p-4 mt-4"
+          @click="saveNote"
           >Save</app-button
         >
+      </div>
+      <div class="notes">
+        <div v-for="savedNote in savedNotes" :key="savedNote.id" class="note">
+          <div class="verses">
+            <p>Verses inside:</p>
+            <p
+              v-for="verse in savedNote.verses"
+              :key="verse.id"
+              style="display: inline"
+            >
+              {{ verse.id + 1 }},
+            </p>
+            <p style="display: inline">
+              From {{ savedNote.verses[0].originBook }}
+            </p>
+            <hr />
+          </div>
+          <p>
+            {{ savedNote.text }}
+          </p>
+        </div>
       </div>
     </div>
   </div>
@@ -44,6 +66,20 @@ export default {
   computed: {
     selectedVerses() {
       return this.$store.getters['read/selectedVerses']
+    },
+    savedNotes() {
+      return this.$store.getters['read/notes']
+    },
+  },
+  methods: {
+    saveNote() {
+      this.$store.dispatch('read/createNote', {
+        id: null,
+        text: this.note,
+        verses: [...this.selectedVerses],
+      })
+
+      this.note = ''
     },
   },
 }

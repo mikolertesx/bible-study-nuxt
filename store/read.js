@@ -1,3 +1,4 @@
+import Note from '@/models/note'
 import { booksInOrder } from '@/util/bibleBooks'
 
 // TODO Add cancel request to avoid overloading the servers
@@ -7,6 +8,7 @@ export const state = () => {
     currentBook: 'Psalms',
     currentChapter: '119',
     verses: [],
+    notes: [],
     loading: false,
   }
 }
@@ -32,6 +34,9 @@ export const mutations = {
   },
   setLoading(state, loading) {
     state.loading = loading
+  },
+  createNote(state, newNote) {
+    state.notes.push(newNote)
   },
 }
 
@@ -109,6 +114,11 @@ export const actions = {
     // TODO Go to the previous book if we are on the first chapter.
     dispatch('setCurrentChapter', (+state.currentChapter - 1).toString())
   },
+  createNote({ commit }, { id, text, verses }) {
+    console.log(id, text, verses)
+    const newNote = new Note(id, text, verses)
+    commit('createNote', newNote)
+  },
 }
 
 export const getters = {
@@ -125,7 +135,9 @@ export const getters = {
     return state.loading
   },
   selectedVerses(state) {
-    return state.verses.filter((verse) => verse.selected === true)
+    return state.verses
+      .filter((verse) => verse.selected === true)
+      .map((verse) => ({ ...verse, originBook: state.currentBook }))
   },
   chapterNumber(state) {
     const selectedBook = booksInOrder.find(
@@ -138,5 +150,8 @@ export const getters = {
   },
   isLastChapter(_state, getters) {
     return +getters.chapter === getters.chapterNumber
+  },
+  notes(state) {
+    return state.notes
   },
 }
