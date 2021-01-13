@@ -1,0 +1,441 @@
+<!doctype html>
+<html data-n-head-ssr>
+  <head>
+    <title>study-bible</title><meta data-n-head="ssr" charset="utf-8"><meta data-n-head="ssr" name="viewport" content="width=device-width,initial-scale=1"><meta data-n-head="ssr" data-hid="description" name="description" content=""><base href="/bible-study-nuxt/"><link data-n-head="ssr" rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="preload" href="/bible-study-nuxt/_nuxt/d2e1d49.js" as="script"><link rel="preload" href="/bible-study-nuxt/_nuxt/5b1ece9.js" as="script"><link rel="preload" href="/bible-study-nuxt/_nuxt/d216976.js" as="script"><link rel="preload" href="/bible-study-nuxt/_nuxt/517a85a.js" as="script"><link rel="preload" href="/bible-study-nuxt/_nuxt/24b9bf6.js" as="script"><style data-vue-ssr-id="0211d3d2:0 fa7ff0ca:0 22f9044a:0 4249c72a:0 62489344:0 5ae8b921:0">/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}main{display:block}h1{font-size:2em;margin:.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details{display:block}summary{display:list-item}[hidden],template{display:none}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}button{background-color:transparent;background-image:none}button:focus{outline:1px dotted;outline:5px auto -webkit-focus-ring-color}fieldset,ol,ul{margin:0;padding:0}ol,ul{list-style:none}html{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,"Noto Sans","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";line-height:1.5}*,:after,:before{box-sizing:border-box;border:0 solid #e2e8f0}hr{border-top-width:1px}img{border-style:solid}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{color:#a0aec0}input:-ms-input-placeholder,textarea:-ms-input-placeholder{color:#a0aec0}input::placeholder,textarea::placeholder{color:#a0aec0}[role=button],button{cursor:pointer}table{border-collapse:collapse}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}button,input,optgroup,select,textarea{padding:0;line-height:inherit;color:inherit}code,kbd,pre,samp{font-family:Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}.container{width:100%}@media (min-width:640px){.container{max-width:640px}}@media (min-width:768px){.container{max-width:768px}}@media (min-width:1024px){.container{max-width:1024px}}@media (min-width:1280px){.container{max-width:1280px}}.bg-white{--bg-opacity:1;background-color:#fff;background-color:rgba(255,255,255,var(--bg-opacity))}.bg-blue-500{--bg-opacity:1;background-color:#4299e1;background-color:rgba(66,153,225,var(--bg-opacity))}.bg-blue-800{--bg-opacity:1;background-color:#2c5282;background-color:rgba(44,82,130,var(--bg-opacity))}.border-blue-700{--border-opacity:1;border-color:#2b6cb0;border-color:rgba(43,108,176,var(--border-opacity))}.rounded{border-radius:.25rem}.rounded-lg{border-radius:.5rem}.rounded-r-none{border-top-right-radius:0;border-bottom-right-radius:0}.rounded-b{border-bottom-right-radius:.25rem;border-bottom-left-radius:.25rem}.border-solid{border-style:solid}.border-4{border-width:4px}.border{border-width:1px}.box-border{box-sizing:border-box}.cursor-default{cursor:default}.cursor-pointer{cursor:pointer}.cursor-text{cursor:text}.inline{display:inline}.flex{display:flex}.table{display:table}.hidden{display:none}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.flex-grow{flex-grow:1}.h-16{height:4rem}.h-full{height:100%}.text-lg{font-size:1.125rem}.text-xl{font-size:1.25rem}.text-6xl{font-size:4rem}.m-1{margin:.25rem}.m-2{margin:.5rem}.m-4{margin:1rem}.mx-auto{margin-left:auto;margin-right:auto}.ml-0{margin-left:0}.mb-1{margin-bottom:.25rem}.mb-2{margin-bottom:.5rem}.ml-2{margin-left:.5rem}.mt-4{margin-top:1rem}.mr-4{margin-right:1rem}.mt-8{margin-top:2rem}.min-h-screen{min-height:100vh}.outline-none{outline:2px solid transparent;outline-offset:2px}.overflow-y-auto{overflow-y:auto}.overflow-y-scroll{overflow-y:scroll}.p-2{padding:.5rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.py-1{padding-top:.25rem;padding-bottom:.25rem}.py-2{padding-top:.5rem;padding-bottom:.5rem}.px-4{padding-left:1rem;padding-right:1rem}.pt-0{padding-top:0}.pr-0{padding-right:0}.pb-0{padding-bottom:0}.static{position:static}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.top-0{top:0}.right-0{right:0}.left-0{left:0}.shadow-lg{box-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -2px rgba(0,0,0,.05)}.text-center{text-align:center}.text-white{--text-opacity:1;color:#fff;color:rgba(255,255,255,var(--text-opacity))}.text-gray-500{--text-opacity:1;color:#a0aec0;color:rgba(160,174,192,var(--text-opacity))}.text-gray-600{--text-opacity:1;color:#718096;color:rgba(113,128,150,var(--text-opacity))}.text-gray-800{--text-opacity:1;color:#2d3748;color:rgba(45,55,72,var(--text-opacity))}.text-red-900{--text-opacity:1;color:#742a2a;color:rgba(116,42,42,var(--text-opacity))}.text-blue-400{--text-opacity:1;color:#63b3ed;color:rgba(99,179,237,var(--text-opacity))}.no-underline{text-decoration:none}.select-none{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.align-text-bottom{vertical-align:text-bottom}.w-3\/4{width:75%}.w-full{width:100%}.w-screen{width:100vw}.gap-10{grid-gap:2.5rem;gap:2.5rem}.transform{--transform-translate-x:0;--transform-translate-y:0;--transform-rotate:0;--transform-skew-x:0;--transform-skew-y:0;--transform-scale-x:1;--transform-scale-y:1;transform:translateX(var(--transform-translate-x)) translateY(var(--transform-translate-y)) rotate(var(--transform-rotate)) skewX(var(--transform-skew-x)) skewY(var(--transform-skew-y)) scaleX(var(--transform-scale-x)) scaleY(var(--transform-scale-y))}@-webkit-keyframes spin{to{transform:rotate(1turn)}}@keyframes spin{to{transform:rotate(1turn)}}@-webkit-keyframes ping{75%,to{transform:scale(2);opacity:0}}@keyframes ping{75%,to{transform:scale(2);opacity:0}}@-webkit-keyframes pulse{50%{opacity:.5}}@keyframes pulse{50%{opacity:.5}}@-webkit-keyframes bounce{0%,to{transform:translateY(-25%);-webkit-animation-timing-function:cubic-bezier(.8,0,1,1);animation-timing-function:cubic-bezier(.8,0,1,1)}50%{transform:none;-webkit-animation-timing-function:cubic-bezier(0,0,.2,1);animation-timing-function:cubic-bezier(0,0,.2,1)}}@keyframes bounce{0%,to{transform:translateY(-25%);-webkit-animation-timing-function:cubic-bezier(.8,0,1,1);animation-timing-function:cubic-bezier(.8,0,1,1)}50%{transform:none;-webkit-animation-timing-function:cubic-bezier(0,0,.2,1);animation-timing-function:cubic-bezier(0,0,.2,1)}}@media (min-width:640px){.sm\:container{width:100%}}@media (min-width:640px) and (min-width:640px){.sm\:container{max-width:640px}}@media (min-width:640px) and (min-width:768px){.sm\:container{max-width:768px}}@media (min-width:640px) and (min-width:1024px){.sm\:container{max-width:1024px}}@media (min-width:640px) and (min-width:1280px){.sm\:container{max-width:1280px}}@media (min-width:768px){.md\:container{width:100%}}@media (min-width:768px) and (min-width:640px){.md\:container{max-width:640px}}@media (min-width:768px) and (min-width:768px){.md\:container{max-width:768px}}@media (min-width:768px) and (min-width:1024px){.md\:container{max-width:1024px}}@media (min-width:768px) and (min-width:1280px){.md\:container{max-width:1280px}}@media (min-width:768px){.md\:block{display:block}.md\:w-1\/2{width:50%}}@media (min-width:1024px){.lg\:container{width:100%}}@media (min-width:1024px) and (min-width:640px){.lg\:container{max-width:640px}}@media (min-width:1024px) and (min-width:768px){.lg\:container{max-width:768px}}@media (min-width:1024px) and (min-width:1024px){.lg\:container{max-width:1024px}}@media (min-width:1024px) and (min-width:1280px){.lg\:container{max-width:1280px}}@media (min-width:1024px){.lg\:w-5\/6{width:83.333333%}}@media (min-width:1280px){.xl\:container{width:100%}}@media (min-width:1280px) and (min-width:640px){.xl\:container{max-width:640px}}@media (min-width:1280px) and (min-width:768px){.xl\:container{max-width:768px}}@media (min-width:1280px) and (min-width:1024px){.xl\:container{max-width:1024px}}@media (min-width:1280px) and (min-width:1280px){.xl\:container{max-width:1280px}}.nuxt-progress{position:fixed;top:0;left:0;right:0;height:2px;width:0;opacity:1;transition:width .1s,opacity .4s;background-color:#000;z-index:999999}.nuxt-progress.nuxt-progress-notransition{transition:none}.nuxt-progress-failed{background-color:red}html{font-family:"Source Sans Pro",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:16px;word-spacing:1px;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;box-sizing:border-box;height:100%}*,:after,:before{box-sizing:border-box;margin:0}.button--green{display:inline-block;border-radius:4px;border:1px solid #3b8070;color:#3b8070;text-decoration:none;padding:10px 30px}.button--green:hover{color:#fff;background-color:#3b8070}.button--grey{display:inline-block;border-radius:4px;border:1px solid #35495e;color:#35495e;text-decoration:none;padding:10px 30px;margin-left:15px}.button--grey:hover{color:#fff;background-color:#35495e}.content{height:calc(100vh - 4rem);margin-top:4rem;overflow:hidden}header[data-v-54ac2846]{background:#000}.main-bible-space[data-v-51c4a76f]{background:url(/bible-study-nuxt/_nuxt/img/bg-black-pattern.2afaf81.png)}.text-wavy[data-v-034ea658]{-webkit-text-decoration-style:solid;text-decoration-style:solid;-webkit-text-decoration-color:"#222444";text-decoration-color:"#222444";-webkit-text-decoration-line:underline;text-decoration-line:underline;text-decoration-thickness:5px;-webkit-text-decoration-skip-ink:none;text-decoration-skip-ink:none;text-underline-position:under}.bordered-cage[data-v-034ea658]{border-right:1px solid #000;border-bottom:1px solid #000}</style><link rel="preload" href="/bible-study-nuxt/_nuxt/static/1610577791/read/state.js" as="script"><link rel="preload" href="/bible-study-nuxt/_nuxt/static/1610577791/read/payload.js" as="script"><link rel="preload" href="/bible-study-nuxt/_nuxt/static/1610577791/manifest.js" as="script">
+  </head>
+  <body>
+    <div data-server-rendered="true" id="__nuxt"><!----><div id="__layout"><div class="app-wrapper"><header class="fixed left-0 top-0 w-screen p-2 h-16" data-v-54ac2846><nav class="flex justify-between box-border py-1 px-4 item-center h-full" data-v-54ac2846><select data-v-54ac2846><option value="Genesis" data-v-54ac2846>
+        Genesis
+      </option><option value="Exodus" data-v-54ac2846>
+        Exodus
+      </option><option value="Leviticus" data-v-54ac2846>
+        Leviticus
+      </option><option value="Numbers" data-v-54ac2846>
+        Numbers
+      </option><option value="Deuteronomy" data-v-54ac2846>
+        Deuteronomy
+      </option><option value="Joshua" data-v-54ac2846>
+        Joshua
+      </option><option value="Judges" data-v-54ac2846>
+        Judges
+      </option><option value="Ruth" data-v-54ac2846>
+        Ruth
+      </option><option value="1 Samuel" data-v-54ac2846>
+        1 Samuel
+      </option><option value="2 Samuel" data-v-54ac2846>
+        2 Samuel
+      </option><option value="1 Kings" data-v-54ac2846>
+        1 Kings
+      </option><option value="2 Kings" data-v-54ac2846>
+        2 Kings
+      </option><option value="1 Chronicles" data-v-54ac2846>
+        1 Chronicles
+      </option><option value="2 Chronicles" data-v-54ac2846>
+        2 Chronicles
+      </option><option value="Ezra" data-v-54ac2846>
+        Ezra
+      </option><option value="Nehemiah" data-v-54ac2846>
+        Nehemiah
+      </option><option value="Esther" data-v-54ac2846>
+        Esther
+      </option><option value="Job" data-v-54ac2846>
+        Job
+      </option><option selected value="Psalms" data-v-54ac2846>
+        Psalms
+      </option><option value="Proverbs" data-v-54ac2846>
+        Proverbs
+      </option><option value="Ecclesiastes" data-v-54ac2846>
+        Ecclesiastes
+      </option><option value="Song of Solomon" data-v-54ac2846>
+        Song of Solomon
+      </option><option value="Isaiah" data-v-54ac2846>
+        Isaiah
+      </option><option value="Jeremiah" data-v-54ac2846>
+        Jeremiah
+      </option><option value="Lamentations" data-v-54ac2846>
+        Lamentations
+      </option><option value="Ezekiel" data-v-54ac2846>
+        Ezekiel
+      </option><option value="Daniel" data-v-54ac2846>
+        Daniel
+      </option><option value="Hosea" data-v-54ac2846>
+        Hosea
+      </option><option value="Joel" data-v-54ac2846>
+        Joel
+      </option><option value="Amos" data-v-54ac2846>
+        Amos
+      </option><option value="Obadiah " data-v-54ac2846>
+        Obadiah 
+      </option><option value="Jonah" data-v-54ac2846>
+        Jonah
+      </option><option value="Micah" data-v-54ac2846>
+        Micah
+      </option><option value="Nahum" data-v-54ac2846>
+        Nahum
+      </option><option value="Habakkuk" data-v-54ac2846>
+        Habakkuk
+      </option><option value="Zephaniah" data-v-54ac2846>
+        Zephaniah
+      </option><option value="Haggai" data-v-54ac2846>
+        Haggai
+      </option><option value="Zechariah" data-v-54ac2846>
+        Zechariah
+      </option><option value="Malachi" data-v-54ac2846>
+        Malachi
+      </option><option value="Matthew" data-v-54ac2846>
+        Matthew
+      </option><option value="Mark" data-v-54ac2846>
+        Mark
+      </option><option value="Luke" data-v-54ac2846>
+        Luke
+      </option><option value="John" data-v-54ac2846>
+        John
+      </option><option value="Acts (of the Apostles)" data-v-54ac2846>
+        Acts (of the Apostles)
+      </option><option value="Romans" data-v-54ac2846>
+        Romans
+      </option><option value="1 Corinthians" data-v-54ac2846>
+        1 Corinthians
+      </option><option value="2 Corinthians" data-v-54ac2846>
+        2 Corinthians
+      </option><option value="Galatians" data-v-54ac2846>
+        Galatians
+      </option><option value="Ephesians" data-v-54ac2846>
+        Ephesians
+      </option><option value="Philippians" data-v-54ac2846>
+        Philippians
+      </option><option value="Colossians" data-v-54ac2846>
+        Colossians
+      </option><option value="1 Thessalonians" data-v-54ac2846>
+        1 Thessalonians
+      </option><option value="2 Thessalonians" data-v-54ac2846>
+        2 Thessalonians
+      </option><option value="1 Timothy" data-v-54ac2846>
+        1 Timothy
+      </option><option value="2 Timothy" data-v-54ac2846>
+        2 Timothy
+      </option><option value="Titus" data-v-54ac2846>
+        Titus
+      </option><option value="Philemon" data-v-54ac2846>
+        Philemon
+      </option><option value="Hebrews" data-v-54ac2846>
+        Hebrews
+      </option><option value="James" data-v-54ac2846>
+        James
+      </option><option value="1 Peter" data-v-54ac2846>
+        1 Peter
+      </option><option value="2 Peter" data-v-54ac2846>
+        2 Peter
+      </option><option value="1 John" data-v-54ac2846>
+        1 John
+      </option><option value="2 John" data-v-54ac2846>
+        2 John
+      </option><option value="3 John" data-v-54ac2846>
+        3 John
+      </option><option value="Jude" data-v-54ac2846>
+        Jude
+      </option><option value="Revelation" data-v-54ac2846>
+        Revelation
+      </option></select> <div data-v-54ac2846><button class="px-4 rounded text-white h-full bg-blue-500" data-v-54ac2846>Back</button> <select class="h-full" data-v-54ac2846><option value="1" data-v-54ac2846>
+          1
+        </option><option value="2" data-v-54ac2846>
+          2
+        </option><option value="3" data-v-54ac2846>
+          3
+        </option><option value="4" data-v-54ac2846>
+          4
+        </option><option value="5" data-v-54ac2846>
+          5
+        </option><option value="6" data-v-54ac2846>
+          6
+        </option><option value="7" data-v-54ac2846>
+          7
+        </option><option value="8" data-v-54ac2846>
+          8
+        </option><option value="9" data-v-54ac2846>
+          9
+        </option><option value="10" data-v-54ac2846>
+          10
+        </option><option value="11" data-v-54ac2846>
+          11
+        </option><option value="12" data-v-54ac2846>
+          12
+        </option><option value="13" data-v-54ac2846>
+          13
+        </option><option value="14" data-v-54ac2846>
+          14
+        </option><option value="15" data-v-54ac2846>
+          15
+        </option><option value="16" data-v-54ac2846>
+          16
+        </option><option value="17" data-v-54ac2846>
+          17
+        </option><option value="18" data-v-54ac2846>
+          18
+        </option><option value="19" data-v-54ac2846>
+          19
+        </option><option value="20" data-v-54ac2846>
+          20
+        </option><option value="21" data-v-54ac2846>
+          21
+        </option><option value="22" data-v-54ac2846>
+          22
+        </option><option value="23" data-v-54ac2846>
+          23
+        </option><option value="24" data-v-54ac2846>
+          24
+        </option><option value="25" data-v-54ac2846>
+          25
+        </option><option value="26" data-v-54ac2846>
+          26
+        </option><option value="27" data-v-54ac2846>
+          27
+        </option><option value="28" data-v-54ac2846>
+          28
+        </option><option value="29" data-v-54ac2846>
+          29
+        </option><option value="30" data-v-54ac2846>
+          30
+        </option><option value="31" data-v-54ac2846>
+          31
+        </option><option value="32" data-v-54ac2846>
+          32
+        </option><option value="33" data-v-54ac2846>
+          33
+        </option><option value="34" data-v-54ac2846>
+          34
+        </option><option value="35" data-v-54ac2846>
+          35
+        </option><option value="36" data-v-54ac2846>
+          36
+        </option><option value="37" data-v-54ac2846>
+          37
+        </option><option value="38" data-v-54ac2846>
+          38
+        </option><option value="39" data-v-54ac2846>
+          39
+        </option><option value="40" data-v-54ac2846>
+          40
+        </option><option value="41" data-v-54ac2846>
+          41
+        </option><option value="42" data-v-54ac2846>
+          42
+        </option><option value="43" data-v-54ac2846>
+          43
+        </option><option value="44" data-v-54ac2846>
+          44
+        </option><option value="45" data-v-54ac2846>
+          45
+        </option><option value="46" data-v-54ac2846>
+          46
+        </option><option value="47" data-v-54ac2846>
+          47
+        </option><option value="48" data-v-54ac2846>
+          48
+        </option><option value="49" data-v-54ac2846>
+          49
+        </option><option value="50" data-v-54ac2846>
+          50
+        </option><option value="51" data-v-54ac2846>
+          51
+        </option><option value="52" data-v-54ac2846>
+          52
+        </option><option value="53" data-v-54ac2846>
+          53
+        </option><option value="54" data-v-54ac2846>
+          54
+        </option><option value="55" data-v-54ac2846>
+          55
+        </option><option value="56" data-v-54ac2846>
+          56
+        </option><option value="57" data-v-54ac2846>
+          57
+        </option><option value="58" data-v-54ac2846>
+          58
+        </option><option value="59" data-v-54ac2846>
+          59
+        </option><option value="60" data-v-54ac2846>
+          60
+        </option><option value="61" data-v-54ac2846>
+          61
+        </option><option value="62" data-v-54ac2846>
+          62
+        </option><option value="63" data-v-54ac2846>
+          63
+        </option><option value="64" data-v-54ac2846>
+          64
+        </option><option value="65" data-v-54ac2846>
+          65
+        </option><option value="66" data-v-54ac2846>
+          66
+        </option><option value="67" data-v-54ac2846>
+          67
+        </option><option value="68" data-v-54ac2846>
+          68
+        </option><option value="69" data-v-54ac2846>
+          69
+        </option><option value="70" data-v-54ac2846>
+          70
+        </option><option value="71" data-v-54ac2846>
+          71
+        </option><option value="72" data-v-54ac2846>
+          72
+        </option><option value="73" data-v-54ac2846>
+          73
+        </option><option value="74" data-v-54ac2846>
+          74
+        </option><option value="75" data-v-54ac2846>
+          75
+        </option><option value="76" data-v-54ac2846>
+          76
+        </option><option value="77" data-v-54ac2846>
+          77
+        </option><option value="78" data-v-54ac2846>
+          78
+        </option><option value="79" data-v-54ac2846>
+          79
+        </option><option value="80" data-v-54ac2846>
+          80
+        </option><option value="81" data-v-54ac2846>
+          81
+        </option><option value="82" data-v-54ac2846>
+          82
+        </option><option value="83" data-v-54ac2846>
+          83
+        </option><option value="84" data-v-54ac2846>
+          84
+        </option><option value="85" data-v-54ac2846>
+          85
+        </option><option value="86" data-v-54ac2846>
+          86
+        </option><option value="87" data-v-54ac2846>
+          87
+        </option><option value="88" data-v-54ac2846>
+          88
+        </option><option value="89" data-v-54ac2846>
+          89
+        </option><option value="90" data-v-54ac2846>
+          90
+        </option><option value="91" data-v-54ac2846>
+          91
+        </option><option value="92" data-v-54ac2846>
+          92
+        </option><option value="93" data-v-54ac2846>
+          93
+        </option><option value="94" data-v-54ac2846>
+          94
+        </option><option value="95" data-v-54ac2846>
+          95
+        </option><option value="96" data-v-54ac2846>
+          96
+        </option><option value="97" data-v-54ac2846>
+          97
+        </option><option value="98" data-v-54ac2846>
+          98
+        </option><option value="99" data-v-54ac2846>
+          99
+        </option><option value="100" data-v-54ac2846>
+          100
+        </option><option value="101" data-v-54ac2846>
+          101
+        </option><option value="102" data-v-54ac2846>
+          102
+        </option><option value="103" data-v-54ac2846>
+          103
+        </option><option value="104" data-v-54ac2846>
+          104
+        </option><option value="105" data-v-54ac2846>
+          105
+        </option><option value="106" data-v-54ac2846>
+          106
+        </option><option value="107" data-v-54ac2846>
+          107
+        </option><option value="108" data-v-54ac2846>
+          108
+        </option><option value="109" data-v-54ac2846>
+          109
+        </option><option value="110" data-v-54ac2846>
+          110
+        </option><option value="111" data-v-54ac2846>
+          111
+        </option><option value="112" data-v-54ac2846>
+          112
+        </option><option value="113" data-v-54ac2846>
+          113
+        </option><option value="114" data-v-54ac2846>
+          114
+        </option><option value="115" data-v-54ac2846>
+          115
+        </option><option value="116" data-v-54ac2846>
+          116
+        </option><option value="117" data-v-54ac2846>
+          117
+        </option><option value="118" data-v-54ac2846>
+          118
+        </option><option selected value="119" data-v-54ac2846>
+          119
+        </option><option value="120" data-v-54ac2846>
+          120
+        </option><option value="121" data-v-54ac2846>
+          121
+        </option><option value="122" data-v-54ac2846>
+          122
+        </option><option value="123" data-v-54ac2846>
+          123
+        </option><option value="124" data-v-54ac2846>
+          124
+        </option><option value="125" data-v-54ac2846>
+          125
+        </option><option value="126" data-v-54ac2846>
+          126
+        </option><option value="127" data-v-54ac2846>
+          127
+        </option><option value="128" data-v-54ac2846>
+          128
+        </option><option value="129" data-v-54ac2846>
+          129
+        </option><option value="130" data-v-54ac2846>
+          130
+        </option><option value="131" data-v-54ac2846>
+          131
+        </option><option value="132" data-v-54ac2846>
+          132
+        </option><option value="133" data-v-54ac2846>
+          133
+        </option><option value="134" data-v-54ac2846>
+          134
+        </option><option value="135" data-v-54ac2846>
+          135
+        </option><option value="136" data-v-54ac2846>
+          136
+        </option><option value="137" data-v-54ac2846>
+          137
+        </option><option value="138" data-v-54ac2846>
+          138
+        </option><option value="139" data-v-54ac2846>
+          139
+        </option><option value="140" data-v-54ac2846>
+          140
+        </option><option value="141" data-v-54ac2846>
+          141
+        </option><option value="142" data-v-54ac2846>
+          142
+        </option><option value="143" data-v-54ac2846>
+          143
+        </option><option value="144" data-v-54ac2846>
+          144
+        </option><option value="145" data-v-54ac2846>
+          145
+        </option><option value="146" data-v-54ac2846>
+          146
+        </option><option value="147" data-v-54ac2846>
+          147
+        </option><option value="148" data-v-54ac2846>
+          148
+        </option><option value="149" data-v-54ac2846>
+          149
+        </option><option value="150" data-v-54ac2846>
+          150
+        </option></select> <button class="px-4 rounded text-white h-full bg-blue-500" data-v-54ac2846>Next</button></div></nav></header> <div class="content"><main class="flex box-border h-full" data-v-51c4a76f><div class="w-full md:w-1/2 lg:w-5/6 p-6 pt-0 pb-0 pr-0 box-border main-bible-space" data-v-51c4a76f><div class="bg-white rounded-lg rounded-r-none h-full" data-v-034ea658 data-v-51c4a76f><div class="h-full overflow-y-scroll" data-v-034ea658></div></div></div> <div class="hidden md:block md:w-1/2 h-full" data-v-51c4a76f><div class="w-full h-full overflow-y-auto" data-v-51c4a76f><div class="p-4"><p class="text-center mt-8">Tools</p> <div><p class="text-gray-600 text-center">No verse has been selected.</p></div> <div class="controls"><button disabled class="px-4 rounded text-white h-full w-full p-4 mt-4 bg-blue-800 border-solid cursor-default">Save</button></div> <div class="notes"></div></div></div></div></main></div></div></div></div><script defer src="/bible-study-nuxt/_nuxt/static/1610577791/read/state.js"></script><script src="/bible-study-nuxt/_nuxt/d2e1d49.js" defer></script><script src="/bible-study-nuxt/_nuxt/24b9bf6.js" defer></script><script src="/bible-study-nuxt/_nuxt/5b1ece9.js" defer></script><script src="/bible-study-nuxt/_nuxt/d216976.js" defer></script><script src="/bible-study-nuxt/_nuxt/517a85a.js" defer></script>
+  </body>
+</html>

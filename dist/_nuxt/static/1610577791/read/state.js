@@ -1,0 +1,1 @@
+window.__NUXT__={staticAssetsBase:"\u002Fbible-study-nuxt\u002F_nuxt\u002Fstatic\u002F1610577791",layout:"read",error:null,state:{read:{currentBook:"Psalms",currentChapter:"119",verses:[],notes:[],loading:false}},serverRendered:true,routePath:"\u002Fread",config:{}};
