@@ -1,7 +1,15 @@
 <template>
   <!--  v-for="savedNote in savedNotes" :key="savedNote.id" -->
   <div class="note">
-    <div class="verses p-4 border border-blue-700 shadow-lg rounded-lg m-4">
+    <div
+      class="verses p-4 border border-blue-700 shadow-lg rounded-lg m-4 relative"
+    >
+      <p
+        class="absolute right-0 top-0 m-1 text-red-900 cursor-pointer"
+        @click="removeId(note.id)"
+      >
+        Delete note.
+      </p>
       <div class="p-4">
         <p
           v-for="verse in note.verses"
@@ -55,6 +63,11 @@ export default {
     },
     splitText() {
       return this.note.text.split('\n')
+    },
+  },
+  methods: {
+    removeId(id) {
+      this.$store.dispatch('read/removeNote', id)
     },
   },
 }

@@ -11,6 +11,9 @@
 import ReadHeader from '~/components/layout/Headers/ReadHeader.vue'
 export default {
   components: { ReadHeader },
+  mounted() {
+    this.$store.dispatch('read/loadNotes')
+  },
 }
 </script>
 

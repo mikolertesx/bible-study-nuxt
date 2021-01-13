@@ -38,6 +38,9 @@ export const mutations = {
   createNote(state, newNote) {
     state.notes.push(newNote)
   },
+  removeNote(state, id) {
+    state.notes = state.notes.filter((note) => note.id !== id)
+  },
 }
 
 export const actions = {
@@ -115,8 +118,63 @@ export const actions = {
     dispatch('setCurrentChapter', (+state.currentChapter - 1).toString())
   },
   createNote({ commit }, { id, text, verses }) {
+    const localContent = localStorage.getItem('notes')
+    let currentNotes = []
+
+    try {
+      if (localContent !== null && localContent !== undefined) {
+        currentNotes = JSON.parse(localContent)
+      }
+    } catch (err) {
+      console.error(err)
+      console.error(`Couldn't parse ${localContent.toString()}`)
+    }
+
     const newNote = new Note(id, text, verses)
+    currentNotes.push(newNote)
+    localStorage.setItem('notes', JSON.stringify(currentNotes))
+
     commit('createNote', newNote)
+  },
+  removeNote({ commit }, id) {
+    commit('removeNote', id)
+    const localContent = localStorage.getItem('notes')
+    let currentNotes = null
+
+    try {
+      if (localContent !== null && localContent !== undefined) {
+        currentNotes = JSON.parse(localContent)
+      }
+    } catch (err) {
+      console.error(err)
+    }
+
+    if (currentNotes === null) {
+      return
+    }
+
+    const newNotes = currentNotes.filter((note) => note.id !== id)
+    localStorage.setItem('notes', JSON.stringify(newNotes))
+  },
+  loadNotes({ dispatch }) {
+    const localContent = localStorage.getItem('notes')
+    let currentNotes = []
+
+    try {
+      if (localContent !== null && localContent !== undefined) {
+        currentNotes = JSON.parse(localContent)
+      }
+    } catch (err) {
+      console.error(err)
+      console.error(`Couldn't parse ${localContent.toString()}`)
+    }
+
+    dispatch('setNotes', currentNotes)
+  },
+  setNotes({ commit }, noteArray) {
+    for (const note of noteArray) {
+      commit('createNote', note)
+    }
   },
 }
 
@@ -155,6 +213,8 @@ export const getters = {
     return +getters.chapter === getters.chapterNumber
   },
   notes(state) {
-    return state.notes
+    const reversedNotes = [...state.notes]
+    reversedNotes.reverse()
+    return reversedNotes
   },
 }
