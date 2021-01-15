@@ -54,26 +54,16 @@ export const actions = {
       return
     }
     commit('setLoading', true)
-    const versesResponse = await this.$axios.$get(
-      'https://ajith-holy-bible.p.rapidapi.com/GetChapter',
-      {
-        headers: {
-          'x-rapidapi-key': process.env.key,
-          'x-rapidapi-host': 'ajith-holy-bible.p.rapidapi.com',
-          useQueryString: true,
-        },
-        params: {
-          Book: book || state.currentBook,
-          Chapter: chapter || state.currentChapter,
-        },
-      }
-    )
-    const verses = versesResponse.Output.replace(/&lt;(.+?)&gt;/gs, '')
-      .split(/\d+/)
-      .filter((verse) => verse.trim() !== '')
-      .map((verse, index) => {
-        return { id: index, text: verse.trim(), selected: false }
-      })
+    const fetchedVerses = await this.$axios.$get('/api/verses/verses', {
+      params: {
+        book: book || state.currentBook,
+        chapter: chapter || state.currentChapter,
+      },
+    })
+
+    const verses = fetchedVerses.map((verse) => {
+      return { ...verse, selected: false }
+    })
     commit('setLoading', false)
     commit('setVerses', verses)
   },

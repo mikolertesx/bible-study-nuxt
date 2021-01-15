@@ -1,9 +1,9 @@
 const express = require('express')
 const app = express()
 
-app.get('/echo/:what', (req, res) => {
-  res.json(req.params)
-})
+const versesRoute = require('./routes/verses')
+
+app.use('/verses', versesRoute)
 
 module.exports = {
   path: '/api',

@@ -1,5 +1,4 @@
 export default {
-  // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     title: 'study-bible',
     meta: [
@@ -9,22 +8,12 @@ export default {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
-
   css: [],
-
   plugins: ['~plugins/core-components.js'],
-
   components: true,
-
   buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/tailwindcss'],
-
   modules: ['@nuxtjs/axios'],
-
   axios: {},
-
   build: {},
-  env: {
-    key: process.env.BIBLE_KEY,
-  },
   serverMiddleware: ['~/api/index.js'],
 }
