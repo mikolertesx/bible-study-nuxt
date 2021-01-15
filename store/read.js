@@ -54,7 +54,7 @@ export const actions = {
       return
     }
     commit('setLoading', true)
-    const fetchedVerses = await this.$axios.$get('/api/verses/verses', {
+    const fetchedVerses = await this.$axios.$get('api/verses/verses', {
       params: {
         book: book || state.currentBook,
         chapter: chapter || state.currentChapter,
