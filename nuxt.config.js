@@ -13,7 +13,7 @@ export default {
   components: true,
   buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/tailwindcss'],
   modules: ['@nuxtjs/axios'],
-  axios: {},
+  axios: { baseUrl: process.env.baseUrl },
   build: {},
   serverMiddleware: ['~/api/index.js'],
 }
