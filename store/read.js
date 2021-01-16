@@ -43,16 +43,25 @@ export const mutations = {
   removeNote(state, id) {
     state.notes = state.notes.filter((note) => note.id !== id)
   },
-  unselectNotes(state) {
-    state.notes = state.notes.map((note) => (note.selected = false))
+  unselectVerses(state) {
+    state.verses = [
+      ...state.verses.map((verse) => {
+        return { ...verse, selected: false }
+      }),
+    ]
   },
 }
 
 export const actions = {
   async getVerses({ commit, state }, { book, chapter }) {
     const cachedVerses = cache.get(book, chapter)
-    if (cachedVerses) {
-      commit('setVerses', cachedVerses)
+    if (cachedVerses !== undefined) {
+      commit(
+        'setVerses',
+        cachedVerses.map((verse) => {
+          return { ...verse, selected: false }
+        })
+      )
       return
     }
     commit('setLoading', true)
@@ -62,7 +71,6 @@ export const actions = {
         chapter: chapter || state.currentChapter,
       },
     })
-
     const verses = fetchedVerses.map((verse) => {
       return { ...verse, selected: false }
     })
@@ -128,7 +136,7 @@ export const actions = {
     localStorage.setItem('notes', JSON.stringify(currentNotes))
 
     commit('createNote', newNote)
-    dispatch('unselectNotes')
+    commit('unselectVerses')
   },
   removeNote({ commit }, id) {
     commit('removeNote', id)
@@ -189,7 +197,7 @@ export const getters = {
     return state.loading
   },
   selectedVerses(state) {
-    return state.verses
+    return [...state.verses]
       .filter((verse) => verse.selected === true)
       .map((verse) => ({
         ...verse,
@@ -210,8 +218,8 @@ export const getters = {
     return +getters.chapter === getters.chapterNumber
   },
   notes(state) {
-    const reversedNotes = [...state.notes]
-    reversedNotes.reverse()
-    return reversedNotes
+    // const reversedNotes = [...state.notes]
+    // reversedNotes.reverse()
+    return [...state.notes]
   },
 }

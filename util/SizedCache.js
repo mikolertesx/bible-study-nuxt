@@ -21,7 +21,6 @@ class SizedCache {
   }
 
   removeByIndex(index) {
-    console.log(this.dataSequence, this.data)
     const keyToDelete = this.dataSequence[index]
     delete this.data[keyToDelete]
   }
