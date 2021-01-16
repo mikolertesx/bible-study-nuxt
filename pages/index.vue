@@ -4,13 +4,13 @@
     <p class="subtitle">Gather up and have fun reading the bible</p>
     <p>In this hard times there's no better use of your time</p>
     <div class="controls flex space-x-4 mx-auto mt-4 w-3/4 justify-center">
-      <app-button :class="buttonClass" @click="redirect('/read', true)"
+      <app-button :class="buttonClass" @click="redirect('/auth')"
         >Register</app-button
       >
       <app-button :class="buttonClass" @click="redirect('/read', true)"
         >Login</app-button
       >
-      <app-button :class="buttonClass" @click="redirect('/read')"
+      <app-button :class="buttonClass" @click="redirect('/read', true)"
         >Start reading</app-button
       >
     </div>
@@ -29,9 +29,7 @@ export default {
   methods: {
     redirect(newAdress, notImplemented = false) {
       if (notImplemented) {
-        alert(
-          'This route is not yet implemented, you are getting redirected to the reading section'
-        )
+        alert('This route is not yet fully implemented.')
       }
       this.$router.push(newAdress)
     },
