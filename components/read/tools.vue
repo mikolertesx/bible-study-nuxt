@@ -2,9 +2,9 @@
   <div class="w-full h-full overflow-y-auto">
     <div class="p-4">
       <p class="text-center mt-8">Tools</p>
-      <div v-if="selectedVerses.length === 0">
+      <template v-if="selectedVerses.length === 0">
         <p class="text-gray-600 text-center">No verse has been selected.</p>
-      </div>
+      </template>
       <div v-else-if="selectedVerses.length === 1">
         <p class="text-center text-gray-600">One verse selected</p>
         <p>{{ selectedVerses[0].text }}</p>
@@ -13,16 +13,18 @@
           class="w-full border-4 rounded-b outline-none p-4"
         ></textarea>
       </div>
-      <div v-else>
+      <template v-else>
         <p class="text-center text-gray-600">Multiple verses were selected.</p>
-        <p v-for="verse in selectedVerses" :key="verse.id" class="mb-2">
-          {{ verse.text }}
-        </p>
+        <div class="px-8 py-2">
+          <p v-for="verse in selectedVerses" :key="verse.id" class="mb-2">
+            {{ verse.text }}
+          </p>
+        </div>
         <textarea
           v-model="note"
-          class="w-full border-4 rounded-b outline-none p-4"
+          class="w-full border-4 rounded-b outline-none p-4 resize-none"
         ></textarea>
-      </div>
+      </template>
       <div class="controls">
         <app-button
           :enabled="note.length > 0 && selectedVerses.length !== 0"

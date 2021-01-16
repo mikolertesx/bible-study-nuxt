@@ -2,7 +2,7 @@ import Note from '@/models/note'
 import { BibleSizedCache } from '@/util/SizedCache'
 import { booksInOrder } from '@/util/bibleBooks'
 
-// TODO Add cancel request to avoid overloading the servers
+// TODO Add cancel signal to avoid loading unnecessary requests.
 const cache = new BibleSizedCache()
 
 export const state = () => {
@@ -111,11 +111,9 @@ export const actions = {
     commit('selectVerse', verseId)
   },
   nextChapter({ dispatch, state }) {
-    // TODO Go to the next book if we are on the last chapter.
     dispatch('setCurrentChapter', (+state.currentChapter + 1).toString())
   },
   previousChapter({ dispatch, state }) {
-    // TODO Go to the previous book if we are on the first chapter.
     dispatch('setCurrentChapter', (+state.currentChapter - 1).toString())
   },
   createNote({ commit, dispatch }, { id, text, verses }) {

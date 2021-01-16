@@ -1,11 +1,9 @@
 <template>
   <main class="flex box-border h-full">
-    <div
-      class="w-full md:w-1/2 lg:w-5/6 p-6 pt-0 pb-0 pr-0 box-border main-bible-space"
-    >
+    <div class="flex-auto p-6 pt-0 pb-0 pr-0 box-border main-bible-space">
       <bible :verses="verses"></bible>
     </div>
-    <div class="hidden md:block md:w-1/2 h-full">
+    <div class="hidden flex-none md:block md:w-96 h-full">
       <tools></tools>
     </div>
   </main>

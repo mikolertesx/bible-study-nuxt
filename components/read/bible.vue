@@ -6,7 +6,7 @@
         :key="verse.id"
         :style="{ backgroundColor: verse.background || 'none' }"
         class="align-text-bottom select-none cursor-text mb-1 p-4 text-lg"
-        :class="{ 'ml-2': index !== 0, 'ml-0': index === 0 }"
+        :class="{ 'ml-2': index !== 0, 'ml-0': index === 0, inline: false }"
         @click="selectVerse(verse.id)"
       >
         <span

@@ -18,10 +18,8 @@
 </template>
 
 <script>
-// TODO Create a starting page
-// TODO Fix the styling
 // TODO Add a sidebar
-// TODO Create styling for sidebars (Thinner look for better use of space would be good)
+// TODO Create styling for thinner sidebars
 export default {
   data() {
     return {

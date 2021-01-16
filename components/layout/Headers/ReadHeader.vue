@@ -25,7 +25,6 @@
 
 <script>
 import { booksInOrder } from '~/util/bibleBooks'
-// TODO Add the next and prev button
 export default {
   computed: {
     options() {
