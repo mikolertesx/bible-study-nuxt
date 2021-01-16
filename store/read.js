@@ -41,6 +41,9 @@ export const mutations = {
   removeNote(state, id) {
     state.notes = state.notes.filter((note) => note.id !== id)
   },
+  unselectNotes(state) {
+    state.notes = state.notes.map((note) => (note.selected = false))
+  },
 }
 
 export const actions = {
@@ -107,7 +110,7 @@ export const actions = {
     // TODO Go to the previous book if we are on the first chapter.
     dispatch('setCurrentChapter', (+state.currentChapter - 1).toString())
   },
-  createNote({ commit }, { id, text, verses }) {
+  createNote({ commit, dispatch }, { id, text, verses }) {
     const localContent = localStorage.getItem('notes')
     let currentNotes = []
 
@@ -125,6 +128,7 @@ export const actions = {
     localStorage.setItem('notes', JSON.stringify(currentNotes))
 
     commit('createNote', newNote)
+    dispatch('unselectNotes')
   },
   removeNote({ commit }, id) {
     commit('removeNote', id)
@@ -145,6 +149,9 @@ export const actions = {
 
     const newNotes = currentNotes.filter((note) => note.id !== id)
     localStorage.setItem('notes', JSON.stringify(newNotes))
+  },
+  unselectNotes({ commit }) {
+    commit('unselectNotes')
   },
   loadNotes({ dispatch }) {
     const localContent = localStorage.getItem('notes')

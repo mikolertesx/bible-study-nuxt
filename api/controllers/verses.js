@@ -1,11 +1,6 @@
 const axios = require('axios')
 
-module.exports.versesGet = async (req, res) => {
-  const { book, chapter } = req.query
-  if (!chapter || !book) {
-    return res.json({ error: 'No chapter or book sent.' })
-  }
-
+const getVerses = async (book, chapter) => {
   const response = await axios.get(
     'https://ajith-holy-bible.p.rapidapi.com/GetChapter',
     {
@@ -28,5 +23,24 @@ module.exports.versesGet = async (req, res) => {
       return { id: index, text: verse.trim() }
     })
 
+  return verses
+}
+
+module.exports.versesGet = async (req, res) => {
+  const { book, chapter } = req.query
+  if (!chapter || !book) {
+    return res.json({ error: 'No chapter or book sent.' })
+  }
+
+  const verses = await getVerses(book, chapter)
+
   return res.json(verses)
+}
+
+module.exports.versesLengthGet = async (req, res) => {
+  const { book, chapter } = req.query
+  const verses = await getVerses(book, chapter)
+  return res.json({
+    length: verses.length,
+  })
 }
