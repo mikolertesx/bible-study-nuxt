@@ -218,8 +218,8 @@ export const getters = {
     return +getters.chapter === getters.chapterNumber
   },
   notes(state) {
-    // const reversedNotes = [...state.notes]
-    // reversedNotes.reverse()
-    return [...state.notes]
+    const reversedNotes = [...state.notes]
+    reversedNotes.reverse()
+    return reversedNotes
   },
 }
