@@ -7,4 +7,4 @@ const connectDB = () => {
   })
 }
 
-module.exports = connectDB
+export default connectDB
