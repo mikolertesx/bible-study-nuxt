@@ -1,7 +1,9 @@
 import Note from '@/models/note'
+import { BibleSizedCache } from '@/util/SizedCache'
 import { booksInOrder } from '@/util/bibleBooks'
 
 // TODO Add cancel request to avoid overloading the servers
+const cache = new BibleSizedCache()
 
 export const state = () => {
   return {
@@ -48,12 +50,9 @@ export const mutations = {
 
 export const actions = {
   async getVerses({ commit, state }, { book, chapter }) {
-    if (
-      state.currentBook === book &&
-      state.currentChapter === chapter &&
-      state.verses.length !== 0
-    ) {
-      // We already have the verses in it.
+    const cachedVerses = cache.get(book, chapter)
+    if (cachedVerses) {
+      commit('setVerses', cachedVerses)
       return
     }
     commit('setLoading', true)
@@ -68,6 +67,7 @@ export const actions = {
       return { ...verse, selected: false }
     })
     commit('setLoading', false)
+    cache.set(book, chapter, verses)
     commit('setVerses', verses)
   },
   getAndUpdateVerses({ dispatch, state }, { book, chapter }) {
