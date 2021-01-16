@@ -1,4 +1,4 @@
-const axios = require('axios')
+import axios from 'axios'
 
 const getVerses = async (book, chapter) => {
   const response = await axios.get(
@@ -26,7 +26,7 @@ const getVerses = async (book, chapter) => {
   return verses
 }
 
-module.exports.versesGet = async (req, res) => {
+const versesGet = async (req, res) => {
   const { book, chapter } = req.query
   if (!chapter || !book) {
     return res.json({ error: 'No chapter or book sent.' })
@@ -37,10 +37,12 @@ module.exports.versesGet = async (req, res) => {
   return res.json(verses)
 }
 
-module.exports.versesLengthGet = async (req, res) => {
+const versesLengthGet = async (req, res) => {
   const { book, chapter } = req.query
   const verses = await getVerses(book, chapter)
   return res.json({
     length: verses.length,
   })
 }
+
+export { versesGet, versesLengthGet }

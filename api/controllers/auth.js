@@ -1,7 +1,6 @@
-// const axios = require('axios')
-const User = require('../models/User')
+import User from '../models/User'
 
-module.exports.postRegisterUser = async (req, res) => {
+const postRegisterUser = async (req, res) => {
   const { username, password } = req.body
   if (!username || !password) {
     return res.json({
@@ -18,4 +17,7 @@ module.exports.postRegisterUser = async (req, res) => {
     id: newUser._id,
   }
 }
-module.exports.postLoginUser = (req, res) => {}
+
+const postLoginUser = (req, res) => {}
+
+export { postRegisterUser, postLoginUser }

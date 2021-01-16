@@ -1,8 +1,8 @@
-const express = require('express')
-const connectDB = require('./db/connectDB')
+import express from 'express'
+import connectDB from './db/connectDB'
+import versesRoute from './routes/verses'
+import authRoute from './routes/auth'
 const app = express()
-const versesRoute = require('./routes/verses')
-const authRoute = require('./routes/auth')
 
 app.use(express.json())
 app.use('/verses', versesRoute)
