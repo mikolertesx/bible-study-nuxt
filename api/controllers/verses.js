@@ -31,9 +31,12 @@ const versesGet = async (req, res) => {
   if (!chapter || !book) {
     return res.json({ error: 'No chapter or book sent.' })
   }
-
-  const verses = await getVerses(book, chapter)
-
+  let verses
+  try {
+    verses = await getVerses(book, chapter)
+  } catch (err) {
+    verses = [{ id: '0', text: 'No verse can be fetched' }]
+  }
   return res.json(verses)
 }
 

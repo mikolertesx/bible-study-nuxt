@@ -58,7 +58,6 @@ export default {
   methods: {
     async onSubmit() {
       let url = 'register-user'
-
       if (this.mode !== 'register') {
         url = 'login-user'
       }
@@ -67,11 +66,10 @@ export default {
           username: this.username,
           password: this.password,
         })
-
         if (response.error) {
           throw new Error(response.error)
         }
-
+        this.login({ username: this.username, token: response.id })
         this.$router.push('/read')
       } catch (err) {
         this.error = err.message
@@ -86,6 +84,9 @@ export default {
     },
     onUpdateInput() {
       this.error = null
+    },
+    login({ username, token }) {
+      this.$store.dispatch('auth/login', { username, token })
     },
   },
 }
