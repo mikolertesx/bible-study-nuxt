@@ -4,13 +4,13 @@
     <p class="subtitle">Gather up and have fun reading the bible</p>
     <p>In this hard times there's no better use of your time</p>
     <div class="controls flex space-x-4 mx-auto mt-4 w-3/4 justify-center">
-      <app-button :class="buttonClass" @click="redirect('/auth')"
+      <app-button :class="buttonClass" @click="redirect('/auth', true)"
         >Register</app-button
       >
       <app-button :class="buttonClass" @click="redirect('/read', true)"
         >Login</app-button
       >
-      <app-button :class="buttonClass" @click="redirect('/read', true)"
+      <app-button :class="buttonClass" @click="redirect('/read', false)"
         >Start reading</app-button
       >
     </div>
@@ -18,8 +18,6 @@
 </template>
 
 <script>
-// TODO Add a sidebar
-// TODO Create styling for thinner sidebars
 export default {
   data() {
     return {
