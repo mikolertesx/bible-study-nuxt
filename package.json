@@ -13,6 +13,8 @@
     "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup"
   },
   "dependencies": {
+    "@nuxt-hero-icons/outline": "^1.0.1",
+    "@nuxt-hero-icons/solid": "^1.0.1",
     "@nuxtjs/axios": "^5.12.2",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",

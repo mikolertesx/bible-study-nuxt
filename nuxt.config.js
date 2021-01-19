@@ -11,7 +11,12 @@ export default {
   css: [],
   plugins: ['~plugins/core-components.js'],
   components: true,
-  buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/tailwindcss'],
+  buildModules: [
+    '@nuxtjs/eslint-module',
+    '@nuxtjs/tailwindcss',
+    '@nuxt-hero-icons/outline/nuxt',
+    '@nuxt-hero-icons/solid/nuxt',
+  ],
   modules: ['@nuxtjs/axios'],
   axios: { baseUrl: process.env.baseUrl || '' },
   env: {
