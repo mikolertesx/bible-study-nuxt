@@ -1,8 +1,8 @@
 <template>
-  <div class="h-screen flex flex-col">
-    <read-header></read-header>
-    <div class="h-screen flex flex-row overflow-hidden">
-      <sidebar></sidebar>
+  <div class="h-screen flex flex-row">
+    <sidebar></sidebar>
+    <div class="h-screen flex-grow flex flex-col overflow-hidden">
+      <read-header></read-header>
       <Nuxt />
     </div>
   </div>

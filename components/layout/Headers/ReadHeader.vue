@@ -1,5 +1,5 @@
 <template>
-  <header class="w-screen p-2 h-16 flex-none">
+  <header class="w-full p-2 h-16 flex-none">
     <nav class="flex justify-between box-border py-1 px-4 item-center h-full">
       <select v-model="selectedBook">
         <option v-for="option in options" :key="option.id" :value="option.name">
