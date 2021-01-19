@@ -1,6 +1,6 @@
 <template>
-  <main class="flex-auto flex flex-row overflow-hidden">
-    <div class="flex-auto h-full overflow-y-scroll">
+  <main class="flex-auto flex flex-row h-0">
+    <div class="flex-auto overflow-y-scroll">
       <bible :verses="verses"></bible>
     </div>
     <div class="hidden md:block w-96 flex-none">
