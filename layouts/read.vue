@@ -1,7 +1,7 @@
 <template>
   <div class="h-screen flex flex-row">
     <sidebar></sidebar>
-    <div class="h-screen flex-grow flex flex-col overflow-hidden">
+    <div class="h-screen flex-grow flex flex-col">
       <read-header></read-header>
       <Nuxt />
     </div>
