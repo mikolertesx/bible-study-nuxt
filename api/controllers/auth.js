@@ -50,4 +50,10 @@ const postLoginUser = async (req, res) => {
   })
 }
 
-export { postRegisterUser, postLoginUser }
+const noDBSetUpHandler = (req, res) => {
+  return res.json({
+    error: 'This service is unavailable at the moment.',
+  })
+}
+
+export { postRegisterUser, postLoginUser, noDBSetUpHandler }
