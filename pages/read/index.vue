@@ -1,13 +1,14 @@
 <template>
-  <main class="flex box-border h-full">
-    <div class="flex-auto p-6 pt-0 pb-0 pr-0 box-border main-bible-space">
+  <main class="flex-auto flex flex-row overflow-hidden">
+    <div class="flex-auto h-full overflow-y-scroll">
       <bible :verses="verses"></bible>
     </div>
-    <div class="hidden flex-none md:block md:w-96 h-full">
+    <div class="w-96 flex-none">
       <tools></tools>
     </div>
   </main>
 </template>
+
 <script>
 import bible from '~/components/read/bible.vue'
 import tools from '~/components/read/tools.vue'
@@ -63,9 +64,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-.main-bible-space {
-  background: url('~@/static/bg/bg-black-pattern.png');
-}
-</style>

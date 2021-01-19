@@ -1,6 +1,6 @@
 <template>
   <div class="bg-white rounded-lg rounded-r-none h-full">
-    <div v-if="!isLoading" class="h-full overflow-y-scroll">
+    <template v-if="!isLoading">
       <p
         v-for="(verse, index) in verses"
         :key="verse.id"
@@ -27,8 +27,8 @@
           {{ verse.text }}
         </span>
       </p>
-    </div>
-    <div v-else class="flex justify-center items-center min-h-screen">
+    </template>
+    <div v-else class="flex justify-center items-center h-full">
       <spinner></spinner>
     </div>
   </div>

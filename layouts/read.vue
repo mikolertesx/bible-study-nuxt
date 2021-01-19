@@ -1,7 +1,8 @@
 <template>
-  <div class="app-wrapper">
+  <div class="h-screen flex flex-col">
     <read-header></read-header>
-    <div class="content">
+    <div class="h-screen flex flex-row overflow-hidden">
+      <sidebar></sidebar>
       <Nuxt />
     </div>
   </div>
@@ -9,8 +10,9 @@
 
 <script>
 import ReadHeader from '~/components/layout/Headers/ReadHeader.vue'
+import Sidebar from '~/components/ui/sidebar.vue'
 export default {
-  components: { ReadHeader },
+  components: { ReadHeader, Sidebar },
   mounted() {
     this.$store.dispatch('read/loadNotes')
   },

@@ -1,5 +1,6 @@
 <template>
-  <div class="h-screen">
+  <div class="h-screen flex flex-row">
+    <sidebar></sidebar>
     <Nuxt />
   </div>
 </template>
