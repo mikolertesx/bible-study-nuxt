@@ -3,7 +3,7 @@
     <div class="flex-auto h-full overflow-y-scroll">
       <bible :verses="verses"></bible>
     </div>
-    <div class="w-96 flex-none">
+    <div class="hidden md:block w-96 flex-none">
       <tools></tools>
     </div>
   </main>

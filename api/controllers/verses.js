@@ -1,6 +1,12 @@
 import axios from 'axios'
+import { BibleSizedCache } from '../util/SizedCache'
+const bibleCachedChapters = new BibleSizedCache(5000)
 
 const getVerses = async (book, chapter) => {
+  const cachedChapter = bibleCachedChapters.get(book, chapter)
+  if (cachedChapter) {
+    return cachedChapter
+  }
   const response = await axios.get(
     'https://ajith-holy-bible.p.rapidapi.com/GetChapter',
     {
@@ -23,6 +29,7 @@ const getVerses = async (book, chapter) => {
       return { id: index, text: verse.trim() }
     })
 
+  bibleCachedChapters.set(book, chapter, verses)
   return verses
 }
 

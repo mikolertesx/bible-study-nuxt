@@ -1,7 +1,7 @@
 <template>
-  <div class="h-full flex justify-center items-center">
+  <div class="h-full flex-grow flex justify-center items-center">
     <form
-      class="border rounded-xl p-8 shadow-xl h-96 w-96 flex flex-col"
+      class="border rounded-xl p-8 shadow-xl w-96 flex flex-col"
       @submit.prevent="onSubmit"
     >
       <div class="flex items-center mb-12">
@@ -26,6 +26,17 @@
           type="password"
           class="border p-4 flex-auto"
           @input="onUpdateInput"
+        />
+      </div>
+      <div v-if="mode === 'register'" class="flex items-center mb-12">
+        <div class="w-24 inline-block">
+          <label for="confirmPassword">Confirm password</label>
+        </div>
+        <input
+          type="password"
+          name="confirmPassword"
+          class="border p-4 flex-auto"
+          placeholder="confirm password"
         />
       </div>
       <p v-if="error" class="text-red-800">{{ error }}</p>
