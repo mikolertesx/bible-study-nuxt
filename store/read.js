@@ -11,6 +11,7 @@ export const state = () => {
     currentChapter: '119',
     verses: [],
     notes: [],
+    error: null,
     loading: false,
   }
 }
@@ -50,6 +51,9 @@ export const mutations = {
       }),
     ]
   },
+  setError(state, error) {
+    state.error = error
+  },
 }
 
 export const actions = {
@@ -65,18 +69,23 @@ export const actions = {
       return
     }
     commit('setLoading', true)
-    const fetchedVerses = await this.$axios.$get('api/verses/verses', {
-      params: {
-        book: book || state.currentBook,
-        chapter: chapter || state.currentChapter,
-      },
-    })
-    const verses = fetchedVerses.map((verse) => {
-      return { ...verse, selected: false }
-    })
+    try {
+      commit('setError', null)
+      const fetchedVerses = await this.$axios.$get('api/verses/verses', {
+        params: {
+          book: book || state.currentBook,
+          chapter: chapter || state.currentChapter,
+        },
+      })
+      const verses = fetchedVerses.map((verse) => {
+        return { ...verse, selected: false }
+      })
+      cache.set(book, chapter, verses)
+      commit('setVerses', verses)
+    } catch (err) {
+      commit('setError', err.response.data.error)
+    }
     commit('setLoading', false)
-    cache.set(book, chapter, verses)
-    commit('setVerses', verses)
   },
   getAndUpdateVerses({ dispatch, state }, { book, chapter }) {
     if (!book || !chapter) {
@@ -219,5 +228,8 @@ export const getters = {
     const reversedNotes = [...state.notes]
     reversedNotes.reverse()
     return reversedNotes
+  },
+  error(state) {
+    return state.error
   },
 }

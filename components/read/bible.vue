@@ -1,6 +1,10 @@
 <template>
   <div class="bg-white rounded-lg rounded-r-none h-full">
-    <template v-if="!isLoading">
+    <template v-if="error">
+      <p class="pt-16 text-center">An error ocurred.</p>
+      <p class="text-red-700 text-6xl text-center">{{ error }}</p>
+    </template>
+    <template v-else-if="!isLoading">
       <p
         v-for="(verse, index) in verses"
         :key="verse.id"
@@ -46,6 +50,9 @@ export default {
   computed: {
     isLoading() {
       return this.$store.getters['read/loading']
+    },
+    error() {
+      return this.$store.getters['read/error']
     },
   },
   methods: {

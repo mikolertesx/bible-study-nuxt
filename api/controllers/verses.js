@@ -35,7 +35,8 @@ const versesGet = async (req, res) => {
   try {
     verses = await getVerses(book, chapter)
   } catch (err) {
-    verses = [{ id: '0', text: 'No verse can be fetched' }]
+    // verses = [{ id: '0', text: 'No verse can be fetched' }]
+    return res.status(500).json({ error: 'API IS NOT UP.' })
   }
   return res.json(verses)
 }
