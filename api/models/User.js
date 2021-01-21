@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+import mongoose, { Schema } from 'mongoose'
 
 const userSchema = new mongoose.Schema({
   username: {
@@ -12,7 +12,7 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
   notes: {
-    type: Array,
+    type: [{ type: Schema.Types.ObjectId, ref: 'Note' }],
     default: [],
   },
 })
