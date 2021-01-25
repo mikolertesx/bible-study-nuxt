@@ -10,32 +10,19 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 import bible from '~/components/read/bible.vue'
 import tools from '~/components/read/tools.vue'
 export default {
   layout: 'read',
   components: { bible, tools },
   computed: {
-    verses() {
-      return this.$store.getters['read/verses']
-    },
-    chapter() {
-      return this.$store.getters['read/chapter']
-    },
-    book() {
-      return this.$store.getters['read/book']
-    },
+    ...mapGetters('read', ['verses', 'chapter', 'book']),
   },
   watch: {
-    chapter() {
-      this.updateQuery()
-    },
-    book() {
-      this.updateQuery()
-    },
     $route(to) {
       const { book, chapter } = to.query
-      this.getVerses(book, chapter)
+      this.getVerses({ book, chapter })
     },
   },
   mounted() {
@@ -44,14 +31,12 @@ export default {
     this.updateVerses(book, chapter)
   },
   methods: {
-    getVerses(book, chapter) {
-      this.$store.dispatch('read/getAndUpdateVerses', { book, chapter })
-    },
+    ...mapActions('read', { getVerses: 'getAndUpdateVerses' }),
     updateVerses(book, chapter) {
-      this.getVerses(book, chapter)
-      this.updateQuery(book, chapter)
+      this.getVerses({ book, chapter })
+      this.updateQuery({ book, chapter })
     },
-    updateQuery(book = this.book, chapter = this.chapter) {
+    updateQuery({ book = this.book, chapter = this.chapter }) {
       this.$router.push({
         query: {
           ...this.$route.query,

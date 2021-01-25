@@ -39,6 +39,7 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 export default {
   props: {
     verses: {
@@ -48,17 +49,13 @@ export default {
     },
   },
   computed: {
-    isLoading() {
-      return this.$store.getters['read/loading']
-    },
-    error() {
-      return this.$store.getters['read/error']
-    },
+    ...mapGetters('read', {
+      isLoading: 'loading',
+      error: 'error',
+    }),
   },
   methods: {
-    selectVerse(id) {
-      this.$store.dispatch('read/selectVerse', id)
-    },
+    ...mapActions('read', ['selectVerse']),
   },
 }
 </script>

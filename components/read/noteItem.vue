@@ -41,6 +41,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
   props: {
     note: {
@@ -63,9 +64,7 @@ export default {
     },
   },
   methods: {
-    removeId(id) {
-      this.$store.dispatch('read/removeNote', id)
-    },
+    ...mapActions('read', { removeId: 'removeNote' }),
   },
 }
 </script>

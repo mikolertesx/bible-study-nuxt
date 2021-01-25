@@ -24,9 +24,16 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 import { booksInOrder } from '~/util/bibleBooks'
 export default {
   computed: {
+    ...mapGetters('read', [
+      'book',
+      'chapter',
+      'isLastChapter',
+      'isFirstChapter',
+    ]),
     options() {
       return booksInOrder.map((book, index) => {
         return {
@@ -38,18 +45,18 @@ export default {
     },
     selectedBook: {
       get() {
-        return this.$store.getters['read/book']
+        return this.book
       },
       set(value) {
-        return this.$store.dispatch('read/setCurrentBook', value)
+        return this.setBook(value)
       },
     },
     selectedChapter: {
       get() {
-        return this.$store.getters['read/chapter']
+        return this.chapter
       },
       set(value) {
-        return this.$store.dispatch('read/setCurrentChapter', value)
+        return this.setChapter(value)
       },
     },
     chapters() {
@@ -61,20 +68,14 @@ export default {
       )
       return filteredBook ? filteredBook.chapters : null
     },
-    isLastChapter() {
-      return this.$store.getters['read/isLastChapter']
-    },
-    isFirstChapter() {
-      return this.$store.getters['read/isFirstChapter']
-    },
   },
   methods: {
-    goNext() {
-      this.$store.dispatch('read/nextChapter')
-    },
-    goPrev() {
-      this.$store.dispatch('read/previousChapter')
-    },
+    ...mapActions('read', {
+      goNext: 'nextChapter',
+      goPrev: 'previousChapter',
+      setChapter: 'setCurrentChapter',
+      setBook: 'setCurrentBook',
+    }),
   },
 }
 </script>

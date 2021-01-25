@@ -57,6 +57,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
   data() {
     return {
@@ -67,6 +68,7 @@ export default {
     }
   },
   methods: {
+    ...mapActions('auth', ['login']),
     async onSubmit() {
       let url = 'register-user'
       if (this.mode !== 'register') {
@@ -95,9 +97,6 @@ export default {
     },
     onUpdateInput() {
       this.error = null
-    },
-    login({ username, token }) {
-      this.$store.dispatch('auth/login', { username, token })
     },
   },
 }

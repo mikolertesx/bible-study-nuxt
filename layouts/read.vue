@@ -9,12 +9,16 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import ReadHeader from '~/components/layout/Headers/ReadHeader.vue'
 import Sidebar from '~/components/ui/sidebar.vue'
 export default {
   components: { ReadHeader, Sidebar },
   mounted() {
-    this.$store.dispatch('read/loadNotes')
+    this.loadNotes()
+  },
+  methods: {
+    ...mapActions('read', ['loadNotes']),
   },
 }
 </script>
@@ -38,40 +42,5 @@ html {
 *::after {
   box-sizing: border-box;
   margin: 0;
-}
-
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
-}
-
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
-}
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
-}
-
-.content {
-  height: calc(100vh - 4rem);
-  margin-top: 4rem;
-  overflow: hidden;
 }
 </style>

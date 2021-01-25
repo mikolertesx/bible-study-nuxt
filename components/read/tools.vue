@@ -45,6 +45,7 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 import noteItem from '@/components/read/noteItem'
 export default {
   components: {
@@ -56,21 +57,19 @@ export default {
     }
   },
   computed: {
-    selectedVerses() {
-      return this.$store.getters['read/selectedVerses']
-    },
-    savedNotes() {
-      return this.$store.getters['read/notes']
-    },
+    ...mapGetters('read', {
+      selectedVerses: 'selectedVerses',
+      savedNotes: 'notes',
+    }),
   },
   methods: {
+    ...mapActions('read', { createNote: 'createNote' }),
     saveNote() {
-      this.$store.dispatch('read/createNote', {
+      this.createNote({
         id: null,
         text: this.note,
         verses: [...this.selectedVerses],
       })
-
       this.note = ''
     },
   },
