@@ -1,7 +1,8 @@
 <template>
   <div class="h-full flex-grow flex justify-center items-center">
+    <div class="flex-1 hidden lg:block h-full bible-background"></div>
     <form
-      class="border rounded-xl p-8 shadow-xl w-96 flex flex-col"
+      class="flex-1 h-full p-8 shadow-xl flex-shrink-0 flex flex-col justify-center"
       @submit.prevent="onSubmit"
     >
       <div class="flex items-center mb-12">
@@ -40,7 +41,7 @@
         />
       </div>
       <p v-if="error" class="text-red-800">{{ error }}</p>
-      <div class="mt-auto flex w-full justify-around space-x-4">
+      <div class="flex w-full justify-around space-x-4">
         <app-button type="submit" class="p-4 flex-1">
           {{ mode === 'register' ? 'Register' : 'Login' }}
         </app-button>
@@ -101,3 +102,10 @@ export default {
   },
 }
 </script>
+
+<style>
+.bible-background {
+  background-image: url('/bg/bible-bg.jpg');
+  background-size: cover;
+}
+</style>
