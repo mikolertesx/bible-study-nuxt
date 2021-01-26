@@ -41,7 +41,9 @@
         />
       </div>
       <p v-if="error" class="text-red-800">{{ error }}</p>
-      <div class="flex w-full justify-around space-x-4">
+      <div
+        class="flex flex-col lg:flex-row w-full justify-around space-y-4 lg:space-y-0 lg:space-x-4"
+      >
         <app-button type="submit" class="p-4 flex-1">
           {{ mode === 'register' ? 'Register' : 'Login' }}
         </app-button>
