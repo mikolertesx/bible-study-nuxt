@@ -18,7 +18,7 @@ export default {
     this.loadNotes()
   },
   methods: {
-    ...mapActions('read', ['loadNotes']),
+    ...mapActions('notes', ['loadNotes']),
   },
 }
 </script>

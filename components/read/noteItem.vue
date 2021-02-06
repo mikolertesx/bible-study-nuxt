@@ -64,7 +64,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions('read', { removeId: 'removeNote' }),
+    ...mapActions('notes', { removeId: 'removeNote' }),
   },
 }
 </script>

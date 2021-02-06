@@ -59,11 +59,13 @@ export default {
   computed: {
     ...mapGetters('read', {
       selectedVerses: 'selectedVerses',
+    }),
+    ...mapGetters('notes', {
       savedNotes: 'notes',
     }),
   },
   methods: {
-    ...mapActions('read', { createNote: 'createNote' }),
+    ...mapActions('notes', { createNote: 'createNote' }),
     saveNote() {
       this.createNote({
         id: null,
