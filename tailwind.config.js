@@ -7,6 +7,12 @@ module.exports = {
         96: '24rem',
         192: '48rem',
       },
+      height: {
+        screen: 'calc(var(--vh) * 100)',
+      },
+      minHeight: {
+        screen: 'calc(var(--vh) * 100)',
+      },
     },
   },
 }
