@@ -8,10 +8,10 @@ module.exports = {
         192: '48rem',
       },
       height: {
-        screen: 'calc(var(--vh) * 100)',
+        screen: 'var(--vh)',
       },
       minHeight: {
-        screen: 'calc(var(--vh) * 100)',
+        screen: 'var(--vh)',
       },
     },
   },

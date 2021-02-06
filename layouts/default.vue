@@ -1,7 +1,9 @@
 <template>
   <div class="h-screen flex flex-row">
     <sidebar></sidebar>
-    <Nuxt />
+    <div class="flex-grow overflow-y-auto">
+      <Nuxt />
+    </div>
   </div>
 </template>
 

@@ -1,9 +1,11 @@
 <template>
   <div class="container">
-    <h1 class="title">Have a reading club!</h1>
+    <h1 class="title text-3xl md:text-6xl">Have a reading club!</h1>
     <p class="subtitle">Gather up and have fun reading the bible</p>
     <p>In this hard times there's no better use of your time</p>
-    <div class="controls flex space-x-4 mx-auto mt-4 w-3/4 justify-center">
+    <div
+      class="controls flex flex-col md:flex-row space-x-0 md:space-x-4 space-y-4 md:space-y-0 mx-auto mt-4 w-3/4 justify-center"
+    >
       <app-button :class="buttonClass" @click="redirect('/auth', true)"
         >Register</app-button
       >
@@ -44,6 +46,7 @@ export default {
   justify-content: center;
   align-items: center;
   text-align: center;
+  padding: 8px;
 }
 
 .title {
@@ -51,7 +54,7 @@ export default {
     'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   display: block;
   font-weight: 300;
-  font-size: 100px;
+  /* font-size: 100px; */
   color: #35495e;
   letter-spacing: 1px;
 }
