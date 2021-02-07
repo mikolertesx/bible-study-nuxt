@@ -13,7 +13,12 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
   css: ['@/assets/global.css'],
-  plugins: ['~plugins/core-components.js', '~plugins/document-listener.js'],
+  plugins: [
+    '~plugins/core-components.js',
+    '~plugins/document-listener.js',
+    '~plugins/initial-setup.js',
+    '~plugins/axios.js',
+  ],
   components: true,
   buildModules: [
     '@nuxtjs/eslint-module',

@@ -14,8 +14,11 @@ export const mutations = {
 
 export const actions = {
   login({ commit }, { username, token }) {
-    localStorage.setItem('username', username)
-    localStorage.setItem('token', token)
+    if (!process.server) {
+      // The || operator is here because null is converted to 'null'
+      localStorage.setItem('username', username || '')
+      localStorage.setItem('token', token || '')
+    }
     commit('setLogin', { username, token })
   },
   logoff({ commit }) {
@@ -40,7 +43,7 @@ export const getters = {
     if (getters.isLoggedIn) {
       return state.token
     } else {
-      return null
+      return ''
     }
   },
 }
