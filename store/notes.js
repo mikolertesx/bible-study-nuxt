@@ -56,7 +56,10 @@ export const actions = {
   },
   async loadNotes({ dispatch }) {
     const { notes } = await this.$axios.$get('api/notes/notes')
-    dispatch('setNotes', notes)
+    const formattedNotes = notes.map((note) => {
+      return { ...note, id: note._id }
+    })
+    dispatch('setNotes', formattedNotes)
   },
   setNotes({ commit }, noteArray) {
     for (const note of noteArray) {
