@@ -9,7 +9,7 @@
         </option>
       </select>
       <div class="flex md:block w-full md:w-auto justify-around">
-        <app-button :enabled="!isFirstChapter" @click="goPrev">
+        <app-button :enabled="!isFirstChapter" @click="goPrevAction">
           <p class="hidden md:inline">Back</p>
           <SolidChevronLeftIcon
             class="inline md:hidden h-8"
@@ -24,7 +24,7 @@
             {{ chapter }}
           </option>
         </select>
-        <app-button :enabled="!isLastChapter" @click="goNext">
+        <app-button :enabled="!isLastChapter" @click="goNextAction">
           <p class="hidden md:inline">Next</p>
           <SolidChevronRightIcon
             class="inline md:hidden h-8"
@@ -88,6 +88,26 @@ export default {
       setChapter: 'setCurrentChapter',
       setBook: 'setCurrentBook',
     }),
+    goNextAction() {
+      this.goNext()
+      this.$router.push({
+        query: {
+          ...this.$route.query,
+          book: this.selectedBook,
+          chapter: this.selectedChapter,
+        },
+      })
+    },
+    goPrevAction() {
+      this.goPrev()
+      this.$router.push({
+        query: {
+          ...this.$route.query,
+          book: this.selectedBook,
+          chapter: this.selectedChapter,
+        },
+      })
+    },
   },
 }
 </script>

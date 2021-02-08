@@ -23,6 +23,7 @@ export default {
     $route(to) {
       const { book, chapter } = to.query
       this.getVerses({ book, chapter })
+      // this.updateQuery()
     },
   },
   mounted() {
