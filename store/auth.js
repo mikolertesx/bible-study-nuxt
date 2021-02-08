@@ -19,11 +19,13 @@ export const actions = {
       localStorage.setItem('username', username)
       localStorage.setItem('token', token)
     }
+    commit('notes/clearNotes', null, { root: true })
     commit('setLogin', { username, token })
   },
   logoff({ commit }) {
     localStorage.removeItem('username')
     localStorage.removeItem('token')
+    commit('notes/clearNotes', null, { root: true })
     commit('setLogin', { username: null, token: null })
   },
 }

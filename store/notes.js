@@ -13,6 +13,9 @@ export const mutations = {
   removeNote(state, id) {
     state.notes = state.notes.filter((note) => note.id !== id)
   },
+  clearNotes(state) {
+    state.notes = []
+  },
 }
 
 export const actions = {
@@ -59,6 +62,9 @@ export const actions = {
     for (const note of noteArray) {
       commit('createNote', note)
     }
+  },
+  clearNotes({ commit }) {
+    commit('clearNotes')
   },
 }
 
