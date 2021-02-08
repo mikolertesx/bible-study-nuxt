@@ -3,6 +3,8 @@ import Note from '@/models/note'
 export const state = () => {
   return {
     notes: [],
+    filters: {},
+    // Filters can be "chapter" for now
   }
 }
 
@@ -15,6 +17,9 @@ export const mutations = {
   },
   clearNotes(state) {
     state.notes = []
+  },
+  setFilters(state, filters) {
+    state.filters = filters
   },
 }
 
@@ -54,8 +59,10 @@ export const actions = {
   unselectNotes({ commit }) {
     commit('unselectNotes')
   },
-  async loadNotes({ dispatch }) {
-    const { notes } = await this.$axios.$get('api/notes/notes')
+  async loadNotes({ dispatch, state }) {
+    const { notes } = await this.$axios.$get('api/notes/notes', {
+      params: { ...state.filters },
+    })
     const formattedNotes = notes.map((note) => {
       return { ...note, id: note._id }
     })
@@ -69,6 +76,9 @@ export const actions = {
   },
   clearNotes({ commit }) {
     commit('clearNotes')
+  },
+  setFilters({ commit }, filters) {
+    commit('setFilters', filters)
   },
 }
 

@@ -49,7 +49,7 @@ export const mutations = {
 }
 
 export const actions = {
-  async getVerses({ commit, state }, { book, chapter }) {
+  async getVerses({ commit, state, dispatch }, { book, chapter }) {
     const cachedVerses = cache.get(book, chapter)
     if (cachedVerses !== undefined) {
       commit(
@@ -58,6 +58,8 @@ export const actions = {
           return { ...verse, selected: false }
         })
       )
+      dispatch('notes/setFilters', { chapter }, { root: true })
+      dispatch('notes/loadNotes', null, { root: true })
       return
     }
     commit('setLoading', true)
@@ -69,6 +71,8 @@ export const actions = {
           chapter: chapter || state.currentChapter,
         },
       })
+      dispatch('notes/setFilters', { chapter }, { root: true })
+      dispatch('notes/loadNotes', null, { root: true })
       const verses = fetchedVerses.map((verse) => {
         return { ...verse, selected: false }
       })
