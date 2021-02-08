@@ -59,6 +59,7 @@ export const actions = {
     const formattedNotes = notes.map((note) => {
       return { ...note, id: note._id }
     })
+    dispatch('clearNotes')
     dispatch('setNotes', formattedNotes)
   },
   setNotes({ commit }, noteArray) {
