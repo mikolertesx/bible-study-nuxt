@@ -14,10 +14,10 @@ export const mutations = {
 
 export const actions = {
   login({ commit }, { username, token }) {
-    if (!process.server) {
+    if (!process.server && username && token) {
       // The || operator is here because null is converted to 'null'
-      localStorage.setItem('username', username || '')
-      localStorage.setItem('token', token || '')
+      localStorage.setItem('username', username)
+      localStorage.setItem('token', token)
     }
     commit('setLogin', { username, token })
   },

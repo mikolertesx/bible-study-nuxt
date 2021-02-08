@@ -16,63 +16,44 @@ export const mutations = {
 }
 
 export const actions = {
-  createNote({ commit, dispatch }, { id, text, verses }) {
-    const localContent = localStorage.getItem('notes')
-    let currentNotes = []
-
-    try {
-      if (localContent !== null && localContent !== undefined) {
-        currentNotes = JSON.parse(localContent)
-      }
-    } catch (err) {
-      console.error(err)
-      console.error(`Couldn't parse ${localContent.toString()}`)
-    }
-
-    const newNote = new Note(id, text, verses)
-    currentNotes.push(newNote)
-    localStorage.setItem('notes', JSON.stringify(currentNotes))
-
-    commit('createNote', newNote)
-    commit('read/unselectVerses', null, { root: true })
-  },
-  removeNote({ commit }, id) {
-    commit('removeNote', id)
-    const localContent = localStorage.getItem('notes')
-    let currentNotes = null
-
-    try {
-      if (localContent !== null && localContent !== undefined) {
-        currentNotes = JSON.parse(localContent)
-      }
-    } catch (err) {
-      console.error(err)
-    }
-
-    if (currentNotes === null) {
+  async createNote({ commit, rootGetters }, { text, verses }) {
+    if (!rootGetters['auth/isLoggedIn']) {
+      alert('You have to be logged in, in order to do that')
       return
     }
-
-    const newNotes = currentNotes.filter((note) => note.id !== id)
-    localStorage.setItem('notes', JSON.stringify(newNotes))
+    try {
+      const result = await this.$axios.$post('api/notes/add-note', {
+        text,
+        verses,
+      })
+      if (result.error) {
+        throw new Error(`Couldn't add post, with ${result.error}`)
+      }
+      const newNote = new Note(result.id, text, verses)
+      console.log('Note created', result.id)
+      commit('createNote', newNote)
+      commit('read/unselectVerses', null, { root: true })
+    } catch (err) {
+      console.error(err)
+    }
+  },
+  async removeNote({ commit }, id) {
+    commit('removeNote', id)
+    try {
+      const result = await this.$axios.$post('api/notes/delete-note', { id })
+      if (result.error) {
+        throw new Error(`Couldn't delete post, with ${result.error}`)
+      }
+    } catch (err) {
+      console.error(err)
+    }
   },
   unselectNotes({ commit }) {
     commit('unselectNotes')
   },
-  loadNotes({ dispatch }) {
-    const localContent = localStorage.getItem('notes')
-    let currentNotes = []
-
-    try {
-      if (localContent !== null && localContent !== undefined) {
-        currentNotes = JSON.parse(localContent)
-      }
-    } catch (err) {
-      console.error(err)
-      console.error(`Couldn't parse ${localContent.toString()}`)
-    }
-
-    dispatch('setNotes', currentNotes)
+  async loadNotes({ dispatch }) {
+    const { notes } = await this.$axios.$get('api/notes/notes')
+    dispatch('setNotes', notes)
   },
   setNotes({ commit }, noteArray) {
     for (const note of noteArray) {

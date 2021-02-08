@@ -34,10 +34,35 @@ const postAddNote = async (req, res) => {
 
   return res.json({
     message: 'Ok',
+    id: newNote._id,
   })
 }
 const postUpdateNote = () => {}
-const postDeleteNote = () => {}
+const postDeleteNote = async (req, res) => {
+  const { user } = res.locals
+  const { id } = req.body
+
+  const FoundNote = await Note.findById(id)
+  if (!FoundNote) {
+    return res.json({
+      error: 'Note not found',
+    })
+  }
+
+  if (user._id.toString() !== FoundNote.owner.toString()) {
+    return res.json({
+      error: 'You are not allowed to delete this note',
+    })
+  }
+
+  await Note.findByIdAndRemove(id)
+  await user.notes.pull({ _id: id })
+  await user.save()
+
+  return res.json({
+    message: 'Deleted successfully',
+  })
+}
 const getNotes = async (req, res) => {
   const { user } = res.locals
   const populatedUser = await user.populate('notes').execPopulate()

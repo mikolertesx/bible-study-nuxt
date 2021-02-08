@@ -10,7 +10,14 @@ const noteSchema = new mongoose.Schema({
     default: '',
   },
   verses: {
-    type: [String],
+    type: [
+      {
+        id: String,
+        originBook: String,
+        originChapter: String,
+        text: String,
+      },
+    ],
     default: [],
   },
 })
