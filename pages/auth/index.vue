@@ -70,6 +70,11 @@ export default {
       error: null,
     }
   },
+  mounted() {
+    if (this.$route.query.mode === 'register') {
+      this.mode = 'register'
+    }
+  },
   methods: {
     ...mapActions('auth', ['login']),
     async onSubmit() {

@@ -6,13 +6,17 @@
     <div
       class="controls flex flex-col md:flex-row space-x-0 md:space-x-4 space-y-4 md:space-y-0 mx-auto mt-4 w-3/4 justify-center"
     >
-      <app-button :class="buttonClass" @click="redirect('/auth', true)"
+      <app-button
+        :class="buttonClass"
+        @click="$router.push({ path: '/auth', query: { mode: 'register' } })"
         >Register</app-button
       >
-      <app-button :class="buttonClass" @click="redirect('/read', true)"
+      <app-button
+        :class="buttonClass"
+        @click="$router.push({ path: '/auth', query: { mode: 'login' } })"
         >Login</app-button
       >
-      <app-button :class="buttonClass" @click="redirect('/read', false)"
+      <app-button :class="buttonClass" @click="$router.push('/read')"
         >Start reading</app-button
       >
     </div>
@@ -27,8 +31,8 @@ export default {
     }
   },
   methods: {
-    redirect(newAdress, notImplemented = false) {
-      if (notImplemented) {
+    redirect(newAdress, redirect = false) {
+      if (redirect) {
         alert('This route is not yet fully implemented.')
       }
       this.$router.push(newAdress)
