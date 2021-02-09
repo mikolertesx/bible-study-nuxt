@@ -7,11 +7,13 @@
       class="controls flex flex-col md:flex-row space-x-0 md:space-x-4 space-y-4 md:space-y-0 mx-auto mt-4 w-3/4 justify-center"
     >
       <app-button
+        v-if="!isLoggedIn"
         :class="buttonClass"
         @click="$router.push({ path: '/auth', query: { mode: 'register' } })"
         >Register</app-button
       >
       <app-button
+        v-if="!isLoggedIn"
         :class="buttonClass"
         @click="$router.push({ path: '/auth', query: { mode: 'login' } })"
         >Login</app-button
@@ -24,11 +26,16 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   data() {
     return {
       buttonClass: 'px-4 py-4 flex-grow',
     }
+  },
+  computed: {
+    ...mapGetters('auth', ['isLoggedIn']),
   },
   methods: {
     redirect(newAdress, redirect = false) {

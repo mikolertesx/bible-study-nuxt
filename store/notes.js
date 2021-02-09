@@ -60,14 +60,19 @@ export const actions = {
     commit('unselectNotes')
   },
   async loadNotes({ dispatch, state }) {
-    const { notes } = await this.$axios.$get('api/notes/notes', {
-      params: { ...state.filters },
-    })
-    const formattedNotes = notes.map((note) => {
-      return { ...note, id: note._id }
-    })
-    dispatch('clearNotes')
-    dispatch('setNotes', formattedNotes)
+    try {
+      const { notes } = await this.$axios.$get('api/notes/notes', {
+        params: { ...state.filters },
+      })
+      const formattedNotes = notes.map((note) => {
+        return { ...note, id: note._id }
+      })
+      dispatch('clearNotes')
+      dispatch('setNotes', formattedNotes)
+    } catch (err) {
+      dispatch('clearNotes')
+      dispatch('setNotes', [])
+    }
   },
   setNotes({ commit }, noteArray) {
     for (const note of noteArray) {
