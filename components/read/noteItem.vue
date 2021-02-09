@@ -22,7 +22,7 @@
       :key="verse.id"
       class="inline text-gray-800"
     >
-      {{ verse.id + 1 }},
+      {{ +verse.id + 1 }},
     </p>
     <nuxt-link :to="link">
       <p class="inline text-blue-400">

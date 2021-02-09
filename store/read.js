@@ -126,8 +126,18 @@ export const actions = {
 }
 
 export const getters = {
-  verses(state) {
-    return [...state.verses]
+  verses(state, _getters, rootState) {
+    const highlightedVerses = {}
+    const notes = rootState.notes.notes
+    notes.forEach((note) => {
+      note.verses.forEach((verse) => {
+        highlightedVerses[verse.id] = true
+      })
+    })
+    const mappedVerses = [...state.verses].map((verse) => {
+      return { ...verse, highlighted: !!highlightedVerses[verse.id] }
+    })
+    return mappedVerses
   },
   chapter(state) {
     return state.currentChapter.toString() || '1'

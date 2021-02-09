@@ -55,8 +55,8 @@ const postDeleteNote = async (req, res) => {
     })
   }
 
-  await Note.findByIdAndRemove(id)
-  await user.notes.pull({ _id: id })
+  // This two can be done at the same time.
+  await Promise.all([Note.findByIdAndRemove(id), user.notes.pull({ _id: id })])
   await user.save()
 
   return res.json({
@@ -66,17 +66,14 @@ const postDeleteNote = async (req, res) => {
 const getNotes = async (req, res) => {
   const { user } = res.locals
   const { chapter } = req.query
-  console.log(req.query)
   const populatedUser = await user.populate('notes').execPopulate()
   let populatedNotes = [...populatedUser.notes]
 
   // TODO Make the filter through the DB
   if (chapter) {
-    console.log(populatedNotes)
     populatedNotes = populatedNotes.filter(
       (note) => note.verses[0].originChapter.toString() === chapter.toString()
     )
-    console.log(populatedNotes)
   }
 
   return res.json({
