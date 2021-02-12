@@ -15,7 +15,6 @@ const getUserOrThrow = async (token) => {
 }
 
 const postAddNote = async (req, res) => {
-  // TODO Remove unlinked notes when there's no longer a user that have them.
   const { user } = res.locals
   const { text, verses } = req.body
   if (!text || !verses) {
@@ -30,6 +29,7 @@ const postAddNote = async (req, res) => {
     verses,
   })
 
+  // TODO Update to a non-deprecated function
   await User.updateOne({ _id: user._id }, { $push: { notes: newNote._id } })
 
   return res.json({

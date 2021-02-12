@@ -1,7 +1,7 @@
 import { BibleSizedCache } from '@/util/SizedCache'
 import { booksInOrder } from '@/util/bibleBooks'
 
-// TODO Add cancel signal to avoid loading unnecessary requests.
+let source = null
 const cache = new BibleSizedCache()
 
 export const state = () => {
@@ -68,6 +68,11 @@ export const actions = {
     commit('setLoading', true)
     try {
       commit('setError', null)
+      if (source) {
+        console.log('Tried to cancel operation')
+        source.cancel('Operation cancelled')
+      }
+      source = this.$axios.CancelToken.source()
       const fetchedVerses = await this.$axios.$get('api/verses/verses', {
         params: {
           book: book || state.currentBook,

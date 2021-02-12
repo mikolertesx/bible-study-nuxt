@@ -1,5 +1,9 @@
 <template>
-  <div class="w-full h-full overflow-y-auto">
+  <div class="w-full h-full p-2 overflow-y-auto">
+    <select v-model="noteView" class="w-3/4 h-8 mx-auto">
+      <option value="all">See all</option>
+      <option value="chapter">Chapter only</option>
+    </select>
     <div class="p-4">
       <p class="text-center mt-8">Tools</p>
       <template v-if="selectedVerses.length === 0">
@@ -62,10 +66,22 @@ export default {
     }),
     ...mapGetters('notes', {
       savedNotes: 'notes',
+      getFilter: 'filter',
     }),
+    noteView: {
+      get() {
+        return this.getFilter
+      },
+      set(value) {
+        this.setFilter(value)
+      },
+    },
   },
   methods: {
-    ...mapActions('notes', { createNote: 'createNote' }),
+    ...mapActions('notes', {
+      createNote: 'createNote',
+      setFilter: 'setFilter',
+    }),
     saveNote() {
       this.createNote({
         id: null,

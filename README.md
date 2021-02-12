@@ -3,4 +3,3 @@
 ## Uses
 An app to better organize bible readings in group.
 ## TODO
-- Finish adding the "add-notes" functionality into the server.

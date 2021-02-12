@@ -4,7 +4,7 @@ export const state = () => {
   return {
     notes: [],
     filters: {},
-    // Filters can be "chapter" for now
+    filterByChapter: true,
   }
 }
 
@@ -20,6 +20,9 @@ export const mutations = {
   },
   setFilters(state, filters) {
     state.filters = filters
+  },
+  setFilter(state, filter) {
+    state.filterByChapter = filter
   },
 }
 
@@ -61,8 +64,9 @@ export const actions = {
   },
   async loadNotes({ dispatch, state }) {
     try {
+      const params = state.filterByChapter ? state.filters : null
       const { notes } = await this.$axios.$get('api/notes/notes', {
-        params: { ...state.filters },
+        params,
       })
       const formattedNotes = notes.map((note) => {
         return { ...note, id: note._id }
@@ -85,6 +89,19 @@ export const actions = {
   setFilters({ commit }, filters) {
     commit('setFilters', filters)
   },
+  setFilter({ commit, dispatch }, filter) {
+    switch (filter) {
+      case 'chapter':
+        commit('setFilter', true)
+        break
+      case 'all':
+        commit('setFilter', false)
+        break
+      default:
+        throw new Error('Unknown type of filter')
+    }
+    dispatch('loadNotes')
+  },
 }
 
 export const getters = {
@@ -92,5 +109,8 @@ export const getters = {
     const reversedNotes = [...state.notes]
     reversedNotes.reverse()
     return reversedNotes
+  },
+  filter(state) {
+    return state.filterByChapter ? 'chapter' : 'all'
   },
 }
